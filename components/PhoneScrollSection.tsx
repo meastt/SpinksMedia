@@ -110,7 +110,7 @@ export const PhoneScrollSection = () => {
 
             {/* Phone Screen Content (Mock Videos - Rendered ON TOP of the phone screen) */}
             {/* NOTE: These specific coordinate percentages (top: 17.3%, left: 28.6%, w: 43.8%, h: 63.5%) were manually fine-tuned pixel-by-pixel to perfectly fit the specific black screen dimensions of the phone-frame.PNG graphic. */}
-            <div className="absolute top-[16.3%] left-[29.35%] w-[42.3%] h-[65.5%] bg-black rounded-[22px] xl:rounded-[28px] overflow-hidden z-30">
+            <div className="absolute top-[16.3%] left-[29.35%] w-[42.3%] h-[65.5%] max-md:top-[17.3%] max-md:h-[63.5%] bg-black rounded-[22px] xl:rounded-[28px] overflow-hidden z-30">
               {/* Phase 1 Video */}
               <div className="absolute inset-0 screen-v1">
                 <video className="absolute inset-0 w-full h-full object-cover shadow-inner" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
@@ -136,39 +136,39 @@ export const PhoneScrollSection = () => {
               </div>
             </div>
             {/* Metric Cards - Phase 1 */}
-            <div className="phase-1-elements absolute top-[15%] -left-4 md:left-[556px] hidden xl:block relative w-[260px] z-40">
+            <div className="phase-1-elements absolute top-[15%] -left-4 md:left-[556px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="2,200" />
               <FloatingIcon emoji="🔥" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
-            <div className="phase-1-elements absolute bottom-[25%] -right-4 md:-right-80 hidden xl:block relative w-[260px] z-40">
+            <div className="phase-1-elements absolute bottom-[25%] -right-4 md:-right-80 flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={TrendingUp} label="Views" value="78,926" />
               <FloatingIcon emoji="📈" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
             </div>
-            <div className="phase-1-elements absolute top-[10%] -right-4 md:-right-[690px] hidden xl:block relative w-[260px] z-40">
+            <div className="phase-1-elements absolute top-[10%] -right-4 md:-right-[690px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Saves" value="4,812" />
               <FloatingIcon emoji="❤️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
 
             {/* Metric Cards - Phase 2 */}
-            <div className="phase-2-elements absolute -top-[180px] -left-4 md:left-[-120px] hidden xl:block opacity-0 relative w-[260px] z-40">
+            <div className="phase-2-elements absolute -top-[180px] -left-4 md:left-[-120px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Share2} label="Shares" value="1,340" />
               <FloatingIcon emoji="✨" className="absolute -top-8 -right-6 scale-90 -rotate-6" />
             </div>
-            <div className="phase-2-elements absolute top-[25%] -left-4 md:left-[122px] hidden xl:block opacity-0 relative w-[260px] z-40">
+            <div className="phase-2-elements absolute top-[25%] -left-4 md:left-[122px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="756" />
               <FloatingIcon emoji="😍" className="absolute -top-8 -right-6 scale-90 rotate-12" />
             </div>
-            <div className="phase-2-elements absolute -top-[100px] -right-4 md:right-[22px] hidden xl:block opacity-0 relative w-[260px] z-40">
+            <div className="phase-2-elements absolute -top-[100px] -right-4 md:right-[22px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={TrendingUp} label="Views" value="20,602" />
               <FloatingIcon emoji="🚀" className="absolute -top-8 -left-6 scale-90 rotate-6" />
             </div>
 
             {/* Metric Cards - Phase 3 */}
-            <div className="phase-3-elements absolute top-[25%] -left-4 md:-left-82 hidden xl:block opacity-0 relative w-[260px] z-40">
+            <div className="phase-3-elements absolute top-[25%] -left-4 md:-left-82 flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="6,700" />
               <FloatingIcon emoji="⬆️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
-            <div className="phase-3-elements absolute bottom-[15%] -right-4 md:right-[1206px] hidden xl:block opacity-0 relative w-[260px] z-40">
+            <div className="phase-3-elements absolute bottom-[15%] -right-4 md:right-[1206px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={TrendingUp} label="Views" value="181,705" />
               <FloatingIcon emoji="💥" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
             </div>
