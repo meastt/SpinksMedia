@@ -100,7 +100,7 @@ export const PhoneScrollSection = () => {
           {/* Phone Frame strictly bound to the image's aspect ratio */}
           <div className="relative h-full max-h-full w-full max-w-full aspect-[757/1091] flex items-center justify-center">
             <Image
-              src="/images/phone-frame.PNG"
+              src="/images/phone-frame.png"
               alt="Phone Frame"
               fill
               sizes="(max-width: 768px) 100vw, 420px"
