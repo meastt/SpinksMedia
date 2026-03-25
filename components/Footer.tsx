@@ -92,9 +92,22 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-muted text-[13px] font-dm-sans">
-            © {new Date().getFullYear()} Spinks Media. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-2">
+            <p className="text-muted text-[13px] font-dm-sans">
+              © {new Date().getFullYear()} Spinks Media. All rights reserved.
+            </p>
+            <p className="text-muted/60 text-[11px] font-dm-sans">
+              Made by your Southern Utah neighbor at{" "}
+              <a 
+                href="https://TechRidgeSEO.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-terracotta hover:text-white transition-colors underline underline-offset-4 font-bold"
+              >
+                TechRidgeSEO.com
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-8">
             <Link href="/privacy" className="text-muted hover:text-white transition-colors text-[13px] font-dm-sans">Privacy Policy</Link>
             <Link href="/terms" className="text-muted hover:text-white transition-colors text-[13px] font-dm-sans">Terms & Conditions</Link>
