@@ -18,63 +18,47 @@ export const PhoneScrollSection = () => {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top -5%",
-          end: "+=315%", // Extended scroll duration to account for larger image size
-          pin: innerRef.current,
-          scrub: 1,
-          anticipatePin: 1,
-        },
+      const mm = gsap.matchMedia();
+
+      const buildTimeline = (p1: string, p2: string, p3: string) => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top -5%",
+            end: "+=315%",
+            pin: innerRef.current,
+            scrub: 1,
+            anticipatePin: 1,
+          },
+        });
+
+        // Phase 1
+        tl.fromTo(p1, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1, stagger: 0.2 }, 0);
+        tl.to(p1, { opacity: 0, scale: 0.8, duration: 1, stagger: 0.1 }, 1.5);
+
+        // Screen transition 1→2
+        tl.to(".screen-v1", { opacity: 0, duration: 0.5 }, 1.5);
+        tl.fromTo(".screen-v2", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.5);
+
+        // Phase 2
+        tl.fromTo(p2, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1, stagger: 0.2 }, 2);
+        tl.to(p2, { opacity: 0, scale: 0.8, duration: 1, stagger: 0.1 }, 3.5);
+
+        // Screen transition 2→3
+        tl.to(".screen-v2", { opacity: 0, duration: 0.5 }, 3.5);
+        tl.fromTo(".screen-v3", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 3.5);
+
+        // Phase 3 (remains visible as component unpins and scrolls out)
+        tl.fromTo(p3, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1, stagger: 0.2 }, 4);
+      };
+
+      mm.add("(min-width: 768px)", () => {
+        buildTimeline(".phase-1-elements", ".phase-2-elements", ".phase-3-elements");
       });
 
-      // Initial State (Phase 1)
-      tl.fromTo(
-        ".phase-1-elements",
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 1, stagger: 0.2 },
-        0
-      );
-
-      // Transition to Phase 2
-      tl.to(
-        ".phase-1-elements",
-        { opacity: 0, scale: 0.8, duration: 1, stagger: 0.1 },
-        1.5
-      );
-
-      // Phone Screen Content Fade - Phase 2
-      tl.to(".screen-v1", { opacity: 0, duration: 0.5 }, 1.5);
-      tl.fromTo(".screen-v2", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.5);
-
-      tl.fromTo(
-        ".phase-2-elements",
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 1, stagger: 0.2 },
-        2
-      );
-
-      // Transition to Phase 3
-      tl.to(
-        ".phase-2-elements",
-        { opacity: 0, scale: 0.8, duration: 1, stagger: 0.1 },
-        3.5
-      );
-
-      // Phone Screen Content Fade - Phase 3
-      tl.to(".screen-v2", { opacity: 0, duration: 0.5 }, 3.5);
-      tl.fromTo(".screen-v3", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 3.5);
-
-      tl.fromTo(
-        ".phase-3-elements",
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 1, stagger: 0.2 },
-        4
-      );
-
-      // Phase 3 elements now intentionally remain fully visible as the component unpins and natively scrolls out of view!
-
+      mm.add("(max-width: 767px)", () => {
+        buildTimeline(".phase-1-mobile", ".phase-2-mobile", ".phase-3-mobile");
+      });
     },
     { scope: containerRef }
   );
@@ -96,7 +80,7 @@ export const PhoneScrollSection = () => {
         {/* The Phone Container */}
         {/* Adjusted to let mobile expand significantly using padding bounds while keeping desktop max-width intact */}
         <div ref={phoneRef} className="relative z-10 w-full max-w-[550px] lg:max-w-[462px] px-4 sm:px-8 lg:px-0 flex items-center justify-center -mt-6 sm:mt-0 flex-grow basis-0 min-h-0">
-          
+
           {/* Phone Frame strictly bound to the image's aspect ratio */}
           <div className="relative h-full max-h-full w-full max-w-full aspect-[757/1091] flex items-center justify-center">
             <Image
@@ -135,43 +119,95 @@ export const PhoneScrollSection = () => {
                 <div className="absolute bottom-10 left-6 text-white font-oswald text-2xl tracking-wide drop-shadow-xl z-10">DESERT OASIS</div>
               </div>
             </div>
-            {/* Metric Cards - Phase 1 */}
-            <div className="phase-1-elements absolute top-[15%] -left-4 md:left-[556px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+
+            {/* ============================================= */}
+            {/* DESKTOP Metric Cards (hidden on mobile)       */}
+            {/* ============================================= */}
+
+            {/* Phase 1 - Desktop */}
+            <div className="phase-1-elements absolute top-[15%] -left-4 md:left-[556px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="2,200" />
               <FloatingIcon emoji="🔥" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
-            <div className="phase-1-elements absolute bottom-[25%] -right-4 md:-right-80 flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            <div className="phase-1-elements absolute bottom-[25%] -right-4 md:-right-80 hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={TrendingUp} label="Views" value="78,926" />
               <FloatingIcon emoji="📈" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
             </div>
-            <div className="phase-1-elements absolute top-[10%] -right-4 md:-right-[690px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            <div className="phase-1-elements absolute top-[10%] -right-4 md:-right-[690px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Saves" value="4,812" />
               <FloatingIcon emoji="❤️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
 
-            {/* Metric Cards - Phase 2 */}
-            <div className="phase-2-elements absolute -top-[180px] -left-4 md:left-[-120px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            {/* Phase 2 - Desktop */}
+            <div className="phase-2-elements absolute -top-[180px] -left-4 md:left-[-120px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Share2} label="Shares" value="1,340" />
               <FloatingIcon emoji="✨" className="absolute -top-8 -right-6 scale-90 -rotate-6" />
             </div>
-            <div className="phase-2-elements absolute top-[25%] -left-4 md:left-[122px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            <div className="phase-2-elements absolute top-[25%] -left-4 md:left-[122px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="756" />
               <FloatingIcon emoji="😍" className="absolute -top-8 -right-6 scale-90 rotate-12" />
             </div>
-            <div className="phase-2-elements absolute -top-[100px] -right-4 md:right-[22px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            <div className="phase-2-elements absolute -top-[100px] -right-4 md:right-[22px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={TrendingUp} label="Views" value="20,602" />
               <FloatingIcon emoji="🚀" className="absolute -top-8 -left-6 scale-90 rotate-6" />
             </div>
 
-            {/* Metric Cards - Phase 3 */}
-            <div className="phase-3-elements absolute top-[25%] -left-4 md:-left-82 flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            {/* Phase 3 - Desktop */}
+            <div className="phase-3-elements absolute top-[25%] -left-4 md:-left-82 hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="6,700" />
               <FloatingIcon emoji="⬆️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
-            <div className="phase-3-elements absolute bottom-[15%] -right-4 md:right-[1206px] flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            <div className="phase-3-elements absolute bottom-[15%] -right-4 md:right-[1206px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
               <MetricCard icon={TrendingUp} label="Views" value="181,705" />
               <FloatingIcon emoji="💥" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
             </div>
+
+            {/* ============================================= */}
+            {/* MOBILE Metric Cards (hidden on desktop)       */}
+            {/* Absolutely positioned within the phone frame  */}
+            {/* scale-[0.55] shrinks 260px cards to ~143px    */}
+            {/* ============================================= */}
+            <div className="absolute inset-0 z-40 md:hidden">
+
+              {/* Phase 1 - Mobile */}
+              <div className="phase-1-mobile absolute top-[8%] -left-[12%] scale-[0.55] origin-top-left opacity-0">
+                <MetricCard icon={Heart} label="Likes" value="2,200" />
+                <FloatingIcon emoji="🔥" className="absolute -top-6 -right-4 scale-75 rotate-6" />
+              </div>
+              <div className="phase-1-mobile absolute bottom-[22%] -right-[12%] scale-[0.55] origin-top-right opacity-0">
+                <MetricCard icon={TrendingUp} label="Views" value="78,926" />
+                <FloatingIcon emoji="📈" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
+              </div>
+              <div className="phase-1-mobile absolute top-[38%] -right-[12%] scale-[0.55] origin-top-right opacity-0">
+                <MetricCard icon={Heart} label="Saves" value="4,812" />
+                <FloatingIcon emoji="❤️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
+              </div>
+
+              {/* Phase 2 - Mobile */}
+              <div className="phase-2-mobile absolute top-[5%] -left-[10%] scale-[0.55] origin-top-left opacity-0">
+                <MetricCard icon={Share2} label="Shares" value="1,340" />
+                <FloatingIcon emoji="✨" className="absolute -top-6 -right-4 scale-75 -rotate-6" />
+              </div>
+              <div className="phase-2-mobile absolute top-[42%] -left-[12%] scale-[0.55] origin-top-left opacity-0">
+                <MetricCard icon={Heart} label="Likes" value="756" />
+                <FloatingIcon emoji="😍" className="absolute -top-6 -right-4 scale-75 rotate-12" />
+              </div>
+              <div className="phase-2-mobile absolute top-[10%] -right-[10%] scale-[0.55] origin-top-right opacity-0">
+                <MetricCard icon={TrendingUp} label="Views" value="20,602" />
+                <FloatingIcon emoji="🚀" className="absolute -top-6 -left-4 scale-75 rotate-6" />
+              </div>
+
+              {/* Phase 3 - Mobile */}
+              <div className="phase-3-mobile absolute top-[25%] -left-[12%] scale-[0.55] origin-top-left opacity-0">
+                <MetricCard icon={Heart} label="Likes" value="6,700" />
+                <FloatingIcon emoji="⬆️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
+              </div>
+              <div className="phase-3-mobile absolute bottom-[15%] -right-[10%] scale-[0.55] origin-top-right opacity-0">
+                <MetricCard icon={TrendingUp} label="Views" value="181,705" />
+                <FloatingIcon emoji="💥" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
+              </div>
+            </div>
+
           </div>
         </div>
 
