@@ -24,15 +24,15 @@ export const PhoneScrollSection = () => {
         p1: string,
         p2: string,
         p3: string,
-        opts: { fromScale: number; toScale: number; exitScale: number },
+        opts: { fromScale: number; toScale: number; exitScale: number; end: string; scrub: number },
       ) => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top -5%",
-            end: "+=315%",
+            end: opts.end,
             pin: innerRef.current,
-            scrub: 1,
+            scrub: opts.scrub,
             anticipatePin: 1,
           },
         });
@@ -77,6 +77,8 @@ export const PhoneScrollSection = () => {
           fromScale: 0.8,
           toScale: 1,
           exitScale: 0.8,
+          end: "+=315%",
+          scrub: 1,
         });
       });
 
@@ -84,9 +86,12 @@ export const PhoneScrollSection = () => {
         // On mobile, the parent element is scaled by GSAP; do not rely on Tailwind scale classes
         // because GSAP's `scale` transform overrides them.
         buildTimeline(".phase-1-mobile", ".phase-2-mobile", ".phase-3-mobile", {
-          fromScale: 0.4,
-          toScale: 0.55,
-          exitScale: 0.4,
+          fromScale: 0.36,
+          toScale: 0.48,
+          exitScale: 0.36,
+          // Give the “scroll stop” more runway and smooth out the feel.
+          end: "+=390%",
+          scrub: 1.5,
         });
       });
     },
@@ -125,11 +130,11 @@ export const PhoneScrollSection = () => {
             {/* Phone Screen Content (Mock Videos - Rendered ON TOP of the phone screen) */}
             {/* NOTE: These specific coordinate percentages (top: 17.3%, left: 28.6%, w: 43.8%, h: 63.5%) were manually fine-tuned pixel-by-pixel to perfectly fit the specific black screen dimensions of the phone-frame.PNG graphic. */}
             <div
-              className="absolute top-[16.3%] left-[29.35%] w-[42.3%] h-[65.5%] max-md:top-[23.6%] max-md:left-[30.35%] max-md:w-[40.3%] max-md:h-[50.8%] bg-black rounded-[22px] xl:rounded-[28px] overflow-hidden z-30"
+              className="absolute top-[16.3%] left-[29.35%] w-[42.3%] h-[65.5%] max-md:top-[22.6%] max-md:left-[29.85%] max-md:w-[41.3%] max-md:h-[52.8%] bg-black rounded-[18px] xl:rounded-[24px] overflow-hidden z-30"
             >
               {/* Phase 1 Video */}
               <div className="absolute inset-0 screen-v1">
-                <video className="absolute inset-0 w-full h-full object-cover shadow-inner" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
+                <video className="absolute inset-0 w-full h-full object-cover shadow-inner rounded-[18px] xl:rounded-[24px]" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
                 <div className="absolute inset-0 bg-terracotta/20 mix-blend-overlay z-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0" />
                 <div className="absolute bottom-10 left-6 text-white font-oswald text-2xl tracking-wide drop-shadow-xl z-10">LUXURY ESTATE</div>
@@ -137,7 +142,7 @@ export const PhoneScrollSection = () => {
 
               {/* Phase 2 Video */}
               <div className="absolute inset-0 screen-v2 opacity-0">
-                <video className="absolute inset-0 w-full h-full object-cover shadow-inner" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
+                <video className="absolute inset-0 w-full h-full object-cover shadow-inner rounded-[18px] xl:rounded-[24px]" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
                 <div className="absolute inset-0 bg-[#2A65C4]/30 mix-blend-overlay z-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0" />
                 <div className="absolute bottom-10 left-6 text-white font-oswald text-2xl tracking-wide drop-shadow-xl z-10">URBAN LOFT</div>
@@ -145,7 +150,7 @@ export const PhoneScrollSection = () => {
 
               {/* Phase 3 Video */}
               <div className="absolute inset-0 screen-v3 opacity-0">
-                <video className="absolute inset-0 w-full h-full object-cover shadow-inner" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
+                <video className="absolute inset-0 w-full h-full object-cover shadow-inner rounded-[18px] xl:rounded-[24px]" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
                 <div className="absolute inset-0 bg-emerald-500/20 mix-blend-overlay z-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0" />
                 <div className="absolute bottom-10 left-6 text-white font-oswald text-2xl tracking-wide drop-shadow-xl z-10">DESERT OASIS</div>
@@ -202,39 +207,39 @@ export const PhoneScrollSection = () => {
             <div className="absolute inset-0 z-40 md:hidden">
 
               {/* Phase 1 - Mobile */}
-              <div className="phase-1-mobile absolute top-[8%] -left-[12%] origin-top-left opacity-0">
+              <div className="phase-1-mobile absolute top-[8%] -left-[9%] origin-top-left opacity-0">
                 <MetricCard icon={Heart} label="Likes" value="2,200" />
                 <FloatingIcon emoji="🔥" className="absolute -top-6 -right-4 scale-75 rotate-6" />
               </div>
-              <div className="phase-1-mobile absolute bottom-[22%] -right-[12%] origin-top-right opacity-0">
+              <div className="phase-1-mobile absolute bottom-[22%] -right-[9%] origin-top-right opacity-0">
                 <MetricCard icon={TrendingUp} label="Views" value="78,926" />
                 <FloatingIcon emoji="📈" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
               </div>
-              <div className="phase-1-mobile absolute top-[38%] -right-[12%] origin-top-right opacity-0">
+              <div className="phase-1-mobile absolute top-[38%] -right-[9%] origin-top-right opacity-0">
                 <MetricCard icon={Heart} label="Saves" value="4,812" />
                 <FloatingIcon emoji="❤️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
               </div>
 
               {/* Phase 2 - Mobile */}
-              <div className="phase-2-mobile absolute top-[5%] -left-[10%] origin-top-left opacity-0">
+              <div className="phase-2-mobile absolute top-[5%] -left-[8%] origin-top-left opacity-0">
                 <MetricCard icon={Share2} label="Shares" value="1,340" />
                 <FloatingIcon emoji="✨" className="absolute -top-6 -right-4 scale-75 -rotate-6" />
               </div>
-              <div className="phase-2-mobile absolute top-[42%] -left-[12%] origin-top-left opacity-0">
+              <div className="phase-2-mobile absolute top-[42%] -left-[9%] origin-top-left opacity-0">
                 <MetricCard icon={Heart} label="Likes" value="756" />
                 <FloatingIcon emoji="😍" className="absolute -top-6 -right-4 scale-75 rotate-12" />
               </div>
-              <div className="phase-2-mobile absolute top-[10%] -right-[10%] origin-top-right opacity-0">
+              <div className="phase-2-mobile absolute top-[10%] -right-[8%] origin-top-right opacity-0">
                 <MetricCard icon={TrendingUp} label="Views" value="20,602" />
                 <FloatingIcon emoji="🚀" className="absolute -top-6 -left-4 scale-75 rotate-6" />
               </div>
 
               {/* Phase 3 - Mobile */}
-              <div className="phase-3-mobile absolute top-[25%] -left-[12%] origin-top-left opacity-0">
+              <div className="phase-3-mobile absolute top-[25%] -left-[9%] origin-top-left opacity-0">
                 <MetricCard icon={Heart} label="Likes" value="6,700" />
                 <FloatingIcon emoji="⬆️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
               </div>
-              <div className="phase-3-mobile absolute bottom-[15%] -right-[10%] origin-top-right opacity-0">
+              <div className="phase-3-mobile absolute bottom-[15%] -right-[8%] origin-top-right opacity-0">
                 <MetricCard icon={TrendingUp} label="Views" value="181,705" />
                 <FloatingIcon emoji="💥" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
               </div>
