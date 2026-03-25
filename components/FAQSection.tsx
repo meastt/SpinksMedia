@@ -85,7 +85,7 @@ export const FAQSection = () => {
         </div>
 
         {/* FAQ Cards Container */}
-        <div className="max-w-4xl mx-auto min-h-[400px]">
+        <div className="max-w-4xl mx-auto min-h-[200px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategoryId}
@@ -114,7 +114,7 @@ export const FAQSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mt-20 bg-black rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left"
+          className="max-w-4xl mx-auto mt-10 bg-black rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left"
         >
           <div>
             <h3 className="text-white font-oswald text-2xl font-bold mb-2">STILL HAVE QUESTIONS?</h3>

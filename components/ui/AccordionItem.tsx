@@ -30,12 +30,12 @@ export const AccordionItem = ({
   const [isOpen, setIsOpen] = useState(isOpenDefault);
 
   return (
-    <div className={cn("border-b border-white/10 last:border-0", className)}>
+    <div className={cn("border-b border-black/10 last:border-0", className)}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-4 flex items-center justify-between gap-4 text-left group"
       >
-        <span className={cn("font-semibold text-base font-dm-sans transition-colors group-hover:text-terracotta", titleClassName)}>
+        <span className={cn("font-semibold text-base font-dm-sans text-gray-800 transition-colors group-hover:text-terracotta", titleClassName)}>
           {title}
         </span>
         <motion.div

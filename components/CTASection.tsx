@@ -9,9 +9,28 @@ export const CTASection = () => {
   return (
     <section className="bg-black py-24 md:py-32">
       <div className="container mx-auto max-w-[1280px] px-4">
-        <div className="relative bg-[var(--color-dark)] rounded-[32px] overflow-hidden p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 group">
+        <div className="relative bg-[var(--color-dark)] rounded-[32px] overflow-hidden p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 group border border-white/5">
+          {/* Decorative background glows */}
+          <div className="absolute -top-24 -left-24 w-[400px] h-[400px] bg-terracotta/20 rounded-full blur-[120px] z-0 pointer-events-none" />
+          <div className="absolute -bottom-32 left-1/3 w-[500px] h-[500px] bg-terracotta/10 rounded-full blur-[140px] z-0 pointer-events-none" />
+          {/* Subtle grid texture overlay */}
+          <div
+            className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+            style={{
+              backgroundImage: "repeating-linear-gradient(0deg,#fff 0px,#fff 1px,transparent 1px,transparent 40px),repeating-linear-gradient(90deg,#fff 0px,#fff 1px,transparent 1px,transparent 40px)",
+            }}
+          />
+
           {/* Left Content */}
           <div className="max-w-2xl text-center lg:text-left z-10">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block text-terracotta text-xs font-bold uppercase tracking-[0.2em] border border-terracotta/40 bg-terracotta/10 px-4 py-1.5 rounded-full mb-6"
+            >
+              Social Media Growth
+            </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -21,7 +40,7 @@ export const CTASection = () => {
               BECOME THE AGENT <br />
               <span className="text-terracotta">ON INSTAGRAM</span>
             </motion.h2>
-            <p className="text-gray-600 text-lg font-dm-sans mb-10 max-w-xl mx-auto lg:mx-0">
+            <p className="text-gray-300 text-lg font-dm-sans mb-10 max-w-xl mx-auto lg:mx-0">
               In 48 hours, we film 45-second branding videos, clips, and professional headshots to transform your social presence. Stop competing—start winning.
             </p>
             <div className="flex justify-center lg:justify-start">

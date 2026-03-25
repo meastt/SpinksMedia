@@ -55,7 +55,7 @@ export const TestimonialsSlider = () => {
                 </div>
                 <div>
                   <div className="font-bold text-black font-dm-sans">{testimonial.name}</div>
-                  <div className="text-xs text-muted font-medium">{testimonial.role}</div>
+                  <div className="text-xs text-gray-500 font-medium">{testimonial.role}</div>
                 </div>
               </div>
             </motion.div>

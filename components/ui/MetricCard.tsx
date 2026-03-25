@@ -44,16 +44,34 @@ export const MetricCard = ({
         </div>
       </div>
 
-      {/* Simplified SVG Sparkline */}
+      {/* Upward-Trending Sparkline */}
       <div className="mt-4 relative z-10">
         <svg
           viewBox="0 0 100 30"
-          className="w-full h-8 stroke-terracotta fill-none stroke-[2.5] stroke-round"
+          className="w-full h-8 fill-none"
         >
+          <defs>
+            <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="var(--color-terracotta)" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="var(--color-terracotta)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          {/* Fill area under the line */}
           <path
-            d="M0,25 L10,22 L20,28 L30,15 L40,20 L50,5 L60,18 L70,12 L80,25 L90,10 L100,15"
-            className="opacity-80"
+            d="M0,28 L10,24 L25,22 L40,17 L55,12 L70,8 L85,5 L100,2 L100,30 L0,30 Z"
+            fill="url(#sparkGrad)"
           />
+          {/* The upward trend line */}
+          <path
+            d="M0,28 L10,24 L25,22 L40,17 L55,12 L70,8 L85,5 L100,2"
+            stroke="var(--color-terracotta)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="opacity-90"
+          />
+          {/* End dot */}
+          <circle cx="100" cy="2" r="2.5" fill="var(--color-terracotta)" className="opacity-90" />
         </svg>
       </div>
     </div>

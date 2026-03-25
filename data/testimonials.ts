@@ -44,7 +44,7 @@ export const testimonials: Testimonial[] = [
     id: "5",
     name: "Elena Rodriguez",
     role: "Director of Marketing, Utah Real Estate",
-    text: "Fast, reliable, and incredibly talented. They handle our entire team's media needs without missing a beat. The 'Full Stable' package is a game changer.",
+    text: "Fast, reliable, and incredibly talented. They handle our entire team's media needs without missing a beat. The 'Summit' package is a game changer.",
     avatar: "/images/testimonial-05.jpg",
     rating: 5,
   },

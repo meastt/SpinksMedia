@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { MetricCard } from "./ui/MetricCard";
 import { FloatingIcon } from "./ui/FloatingIcon";
-import { Heart, Eye, MessageCircle, Share2 } from "lucide-react";
+import { Heart, TrendingUp, MessageCircle, Share2 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -136,38 +136,42 @@ export const PhoneScrollSection = () => {
               </div>
             </div>
             {/* Metric Cards - Phase 1 */}
-            <div className="phase-1-elements absolute top-[10%] -left-32 md:-left-64 hidden xl:block">
+            <div className="phase-1-elements absolute top-[15%] -left-4 md:left-[556px] hidden xl:block relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="2,200" />
+              <FloatingIcon emoji="🔥" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
-            <div className="phase-1-elements absolute bottom-[20%] -right-32 md:-right-64 hidden xl:block">
-              <MetricCard icon={Eye} label="Views" value="78,926" />
+            <div className="phase-1-elements absolute bottom-[25%] -right-4 md:-right-80 hidden xl:block relative w-[260px] z-40">
+              <MetricCard icon={TrendingUp} label="Views" value="78,926" />
+              <FloatingIcon emoji="📈" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
             </div>
-            {/* Floating Icons - Phase 1 */}
-            <FloatingIcon icon={Eye} className="phase-1-elements absolute -top-4 -left-4 md:-top-10 md:-left-12" />
-            <FloatingIcon icon={Heart} className="phase-1-elements absolute -bottom-4 -right-4 md:-bottom-10 md:-right-12" />
+            <div className="phase-1-elements absolute top-[10%] -right-4 md:-right-[690px] hidden xl:block relative w-[260px] z-40">
+              <MetricCard icon={Heart} label="Saves" value="4,812" />
+              <FloatingIcon emoji="❤️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
+            </div>
 
             {/* Metric Cards - Phase 2 */}
-            <div className="phase-2-elements absolute top-[40%] -left-32 md:-left-64 hidden xl:block opacity-0">
+            <div className="phase-2-elements absolute -top-[180px] -left-4 md:left-[-120px] hidden xl:block opacity-0 relative w-[260px] z-40">
+              <MetricCard icon={Share2} label="Shares" value="1,340" />
+              <FloatingIcon emoji="✨" className="absolute -top-8 -right-6 scale-90 -rotate-6" />
+            </div>
+            <div className="phase-2-elements absolute top-[25%] -left-4 md:left-[122px] hidden xl:block opacity-0 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="756" />
-              <FloatingIcon emoji="😍" className="absolute -top-10 -right-10 scale-90 rotate-12" />
+              <FloatingIcon emoji="😍" className="absolute -top-8 -right-6 scale-90 rotate-12" />
             </div>
-            <div className="phase-2-elements absolute top-[10%] -right-32 md:-right-64 hidden xl:block opacity-0">
-              <MetricCard icon={Eye} label="Views" value="20,602" />
+            <div className="phase-2-elements absolute -top-[100px] -right-4 md:right-[22px] hidden xl:block opacity-0 relative w-[260px] z-40">
+              <MetricCard icon={TrendingUp} label="Views" value="20,602" />
+              <FloatingIcon emoji="🚀" className="absolute -top-8 -left-6 scale-90 rotate-6" />
             </div>
-            {/* Floating Icons - Phase 2 */}
-            <FloatingIcon icon={MessageCircle} className="phase-2-elements absolute top-1/2 -left-6 md:-left-20 opacity-0" />
-            <FloatingIcon icon={Share2} className="phase-2-elements absolute top-1/4 -right-6 md:-right-20 opacity-0" />
 
             {/* Metric Cards - Phase 3 */}
-            <div className="phase-3-elements absolute top-[20%] -left-36 md:-left-72 hidden xl:block opacity-0">
+            <div className="phase-3-elements absolute top-[25%] -left-4 md:-left-82 hidden xl:block opacity-0 relative w-[260px] z-40">
               <MetricCard icon={Heart} label="Likes" value="6,700" />
+              <FloatingIcon emoji="⬆️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
             </div>
-            <div className="phase-3-elements absolute bottom-[10%] -right-36 md:-right-72 hidden xl:block opacity-0">
-              <MetricCard icon={Eye} label="Views" value="181,705" />
+            <div className="phase-3-elements absolute bottom-[15%] -right-4 md:right-[1206px] hidden xl:block opacity-0 relative w-[260px] z-40">
+              <MetricCard icon={TrendingUp} label="Views" value="181,705" />
+              <FloatingIcon emoji="💥" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
             </div>
-            {/* Floating Icons - Phase 3 */}
-            <FloatingIcon icon={Heart} className="phase-3-elements absolute -top-4 -right-6 md:-top-12 md:-right-16 opacity-0" />
-            <FloatingIcon icon={MessageCircle} className="phase-3-elements absolute -bottom-4 -left-6 md:-bottom-8 md:-left-16 opacity-0" />
           </div>
         </div>
 

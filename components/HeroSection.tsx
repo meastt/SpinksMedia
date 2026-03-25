@@ -30,6 +30,7 @@ export const HeroSection = () => {
           loop
           playsInline
           className="w-full h-full object-cover opacity-50"
+          preload="none"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
@@ -48,17 +49,12 @@ export const HeroSection = () => {
           St. George Based Real Estate Media Company
         </motion.div>
 
-        {/* H1 Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-[72px] font-oswald font-extrabold text-white leading-[1.1] mb-8 max-w-4xl"
-        >
+        {/* H1 Headline – no entrance animation so LCP element is immediately visible */}
+        <h1 className="text-4xl md:text-6xl lg:text-[72px] font-oswald font-extrabold text-white leading-[1.1] mb-8 max-w-4xl">
           CINEMATIC CONTENT <span className="text-terracotta">THAT WINS</span>
           <br />
           LISTINGS AND GETS CLIENTS.
-        </motion.h1>
+        </h1>
 
         {/* Selling Points */}
         <div className="flex flex-col items-start gap-4 mb-10 max-w-xl">

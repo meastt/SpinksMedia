@@ -58,7 +58,7 @@ export const faqData: FAQCategory[] = [
     questions: [
       {
         question: "How long does a shoot typically take?",
-        answer: "A standard shoot takes 2-4 hours on-site, depending on the home size and chosen services. Luxury tours or 'Full Stable' packages may take 5+ hours.",
+        answer: "A standard shoot takes 2-4 hours on-site, depending on the home size and chosen services. Luxury tours or 'The Summit' packages may take 5+ hours.",
       },
       {
         question: "What should the agent's role be during the shoot?",

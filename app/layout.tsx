@@ -17,6 +17,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Spinks Media | Cinematic Real Estate Content That Wins Listings",
   description: "St. George based real estate media company specializing in cinematic video, high-end photography, and scroll-stopping social content.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
