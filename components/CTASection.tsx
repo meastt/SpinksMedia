@@ -56,7 +56,7 @@ export const CTASection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="relative w-[220px] sm:w-[280px] bg-white rounded-3xl overflow-hidden shadow-2xl rotate-[-4deg] group-hover:rotate-[-2deg] transition-transform duration-500 shrink-0 mt-8 lg:mt-12"
+              className="relative w-[220px] sm:w-[280px] bg-white rounded-3xl overflow-hidden shadow-2xl rotate-[-4deg] group-hover:rotate-[-2deg] transition-transform duration-500 shrink-0 mt-8 lg:mt-12 border-[3px] border-terracotta/80"
             >
               <Image
                 src="/images/agent-details.jpg"
