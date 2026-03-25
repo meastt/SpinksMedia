@@ -20,7 +20,12 @@ export const PhoneScrollSection = () => {
     () => {
       const mm = gsap.matchMedia();
 
-      const buildTimeline = (p1: string, p2: string, p3: string) => {
+      const buildTimeline = (
+        p1: string,
+        p2: string,
+        p3: string,
+        opts: { fromScale: number; toScale: number; exitScale: number },
+      ) => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
@@ -33,31 +38,56 @@ export const PhoneScrollSection = () => {
         });
 
         // Phase 1
-        tl.fromTo(p1, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1, stagger: 0.2 }, 0);
-        tl.to(p1, { opacity: 0, scale: 0.8, duration: 1, stagger: 0.1 }, 1.5);
+        tl.fromTo(
+          p1,
+          { opacity: 0, scale: opts.fromScale },
+          { opacity: 1, scale: opts.toScale, duration: 1, stagger: 0.2 },
+          0,
+        );
+        tl.to(p1, { opacity: 0, scale: opts.exitScale, duration: 1, stagger: 0.1 }, 1.5);
 
         // Screen transition 1→2
         tl.to(".screen-v1", { opacity: 0, duration: 0.5 }, 1.5);
         tl.fromTo(".screen-v2", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.5);
 
         // Phase 2
-        tl.fromTo(p2, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1, stagger: 0.2 }, 2);
-        tl.to(p2, { opacity: 0, scale: 0.8, duration: 1, stagger: 0.1 }, 3.5);
+        tl.fromTo(
+          p2,
+          { opacity: 0, scale: opts.fromScale },
+          { opacity: 1, scale: opts.toScale, duration: 1, stagger: 0.2 },
+          2,
+        );
+        tl.to(p2, { opacity: 0, scale: opts.exitScale, duration: 1, stagger: 0.1 }, 3.5);
 
         // Screen transition 2→3
         tl.to(".screen-v2", { opacity: 0, duration: 0.5 }, 3.5);
         tl.fromTo(".screen-v3", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 3.5);
 
         // Phase 3 (remains visible as component unpins and scrolls out)
-        tl.fromTo(p3, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1, stagger: 0.2 }, 4);
+        tl.fromTo(
+          p3,
+          { opacity: 0, scale: opts.fromScale },
+          { opacity: 1, scale: opts.toScale, duration: 1, stagger: 0.2 },
+          4,
+        );
       };
 
       mm.add("(min-width: 768px)", () => {
-        buildTimeline(".phase-1-elements", ".phase-2-elements", ".phase-3-elements");
+        buildTimeline(".phase-1-elements", ".phase-2-elements", ".phase-3-elements", {
+          fromScale: 0.8,
+          toScale: 1,
+          exitScale: 0.8,
+        });
       });
 
       mm.add("(max-width: 767px)", () => {
-        buildTimeline(".phase-1-mobile", ".phase-2-mobile", ".phase-3-mobile");
+        // On mobile, the parent element is scaled by GSAP; do not rely on Tailwind scale classes
+        // because GSAP's `scale` transform overrides them.
+        buildTimeline(".phase-1-mobile", ".phase-2-mobile", ".phase-3-mobile", {
+          fromScale: 0.4,
+          toScale: 0.55,
+          exitScale: 0.4,
+        });
       });
     },
     { scope: containerRef }
@@ -94,7 +124,9 @@ export const PhoneScrollSection = () => {
 
             {/* Phone Screen Content (Mock Videos - Rendered ON TOP of the phone screen) */}
             {/* NOTE: These specific coordinate percentages (top: 17.3%, left: 28.6%, w: 43.8%, h: 63.5%) were manually fine-tuned pixel-by-pixel to perfectly fit the specific black screen dimensions of the phone-frame.PNG graphic. */}
-            <div className="absolute top-[16.3%] left-[29.35%] w-[42.3%] h-[65.5%] max-md:top-[17.3%] max-md:h-[63.5%] bg-black rounded-[22px] xl:rounded-[28px] overflow-hidden z-30">
+            <div
+              className="absolute top-[16.3%] left-[29.35%] w-[42.3%] h-[65.5%] max-md:top-[23.6%] max-md:left-[30.35%] max-md:w-[40.3%] max-md:h-[50.8%] bg-black rounded-[22px] xl:rounded-[28px] overflow-hidden z-30"
+            >
               {/* Phase 1 Video */}
               <div className="absolute inset-0 screen-v1">
                 <video className="absolute inset-0 w-full h-full object-cover shadow-inner" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
@@ -165,44 +197,44 @@ export const PhoneScrollSection = () => {
             {/* ============================================= */}
             {/* MOBILE Metric Cards (hidden on desktop)       */}
             {/* Absolutely positioned within the phone frame  */}
-            {/* scale-[0.55] shrinks 260px cards to ~143px    */}
+            {/* Final mobile scale is controlled by GSAP.     */}
             {/* ============================================= */}
             <div className="absolute inset-0 z-40 md:hidden">
 
               {/* Phase 1 - Mobile */}
-              <div className="phase-1-mobile absolute top-[8%] -left-[12%] scale-[0.55] origin-top-left opacity-0">
+              <div className="phase-1-mobile absolute top-[8%] -left-[12%] origin-top-left opacity-0">
                 <MetricCard icon={Heart} label="Likes" value="2,200" />
                 <FloatingIcon emoji="🔥" className="absolute -top-6 -right-4 scale-75 rotate-6" />
               </div>
-              <div className="phase-1-mobile absolute bottom-[22%] -right-[12%] scale-[0.55] origin-top-right opacity-0">
+              <div className="phase-1-mobile absolute bottom-[22%] -right-[12%] origin-top-right opacity-0">
                 <MetricCard icon={TrendingUp} label="Views" value="78,926" />
                 <FloatingIcon emoji="📈" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
               </div>
-              <div className="phase-1-mobile absolute top-[38%] -right-[12%] scale-[0.55] origin-top-right opacity-0">
+              <div className="phase-1-mobile absolute top-[38%] -right-[12%] origin-top-right opacity-0">
                 <MetricCard icon={Heart} label="Saves" value="4,812" />
                 <FloatingIcon emoji="❤️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
               </div>
 
               {/* Phase 2 - Mobile */}
-              <div className="phase-2-mobile absolute top-[5%] -left-[10%] scale-[0.55] origin-top-left opacity-0">
+              <div className="phase-2-mobile absolute top-[5%] -left-[10%] origin-top-left opacity-0">
                 <MetricCard icon={Share2} label="Shares" value="1,340" />
                 <FloatingIcon emoji="✨" className="absolute -top-6 -right-4 scale-75 -rotate-6" />
               </div>
-              <div className="phase-2-mobile absolute top-[42%] -left-[12%] scale-[0.55] origin-top-left opacity-0">
+              <div className="phase-2-mobile absolute top-[42%] -left-[12%] origin-top-left opacity-0">
                 <MetricCard icon={Heart} label="Likes" value="756" />
                 <FloatingIcon emoji="😍" className="absolute -top-6 -right-4 scale-75 rotate-12" />
               </div>
-              <div className="phase-2-mobile absolute top-[10%] -right-[10%] scale-[0.55] origin-top-right opacity-0">
+              <div className="phase-2-mobile absolute top-[10%] -right-[10%] origin-top-right opacity-0">
                 <MetricCard icon={TrendingUp} label="Views" value="20,602" />
                 <FloatingIcon emoji="🚀" className="absolute -top-6 -left-4 scale-75 rotate-6" />
               </div>
 
               {/* Phase 3 - Mobile */}
-              <div className="phase-3-mobile absolute top-[25%] -left-[12%] scale-[0.55] origin-top-left opacity-0">
+              <div className="phase-3-mobile absolute top-[25%] -left-[12%] origin-top-left opacity-0">
                 <MetricCard icon={Heart} label="Likes" value="6,700" />
                 <FloatingIcon emoji="⬆️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
               </div>
-              <div className="phase-3-mobile absolute bottom-[15%] -right-[10%] scale-[0.55] origin-top-right opacity-0">
+              <div className="phase-3-mobile absolute bottom-[15%] -right-[10%] origin-top-right opacity-0">
                 <MetricCard icon={TrendingUp} label="Views" value="181,705" />
                 <FloatingIcon emoji="💥" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
               </div>
