@@ -10,7 +10,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-interface AccentButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface AccentButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart"> {
   showIcon?: boolean;
 }
 
