@@ -29,12 +29,12 @@ export const HeroSection = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover opacity-40"
           preload="none"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black" />
       </div>
 
       {/* Content Container */}
