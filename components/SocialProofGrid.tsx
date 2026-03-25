@@ -31,9 +31,9 @@ export const SocialProofGrid = () => {
               viewport={{ once: true }}
               transition={{ delay: (index % 7) * 0.05 }}
               whileHover={{ y: -5 }}
-              className="bg-white p-4 rounded-xl shadow-sm border border-black/5 flex flex-col items-center gap-3 transition-shadow hover:shadow-md"
+              className="bg-black p-4 rounded-xl shadow-xl border border-white/5 flex flex-col items-center gap-3 transition-all hover:shadow-terracotta/10"
             >
-              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-terracotta/20">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-terracotta">
                 <Image
                   src={realtor.image}
                   alt={realtor.name}
@@ -42,9 +42,9 @@ export const SocialProofGrid = () => {
                 />
               </div>
               <div className="text-center">
-                <p className="text-xs font-bold text-black font-dm-sans mb-1">{realtor.name}</p>
-                <div className="flex items-center justify-center gap-1 text-[10px] text-gray-500 font-medium">
-                  <Instagram className="w-3 h-3 text-terracotta" />
+                <p className="text-[11px] font-bold text-white font-dm-sans mb-1 uppercase tracking-tight">{realtor.name}</p>
+                <div className="flex items-center justify-center gap-1.5 text-[10px] text-white/60 font-medium">
+                  <Instagram className="w-3 h-3 text-white" />
                   <span>{realtor.followers}</span>
                 </div>
               </div>
