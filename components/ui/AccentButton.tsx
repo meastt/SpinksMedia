@@ -25,7 +25,7 @@ export const AccentButton = ({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={cn(
-        "bg-terracotta text-black font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors hover:bg-terracotta-dark",
+        "bg-terracotta text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors hover:bg-terracotta-dark",
         className
       )}
       {...props}

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Youtube, Twitter, Disc as Discord } from "lucide-react";
+import { Instagram, Youtube, Twitter, Music as TikTok } from "lucide-react";
 import { AccentButton } from "./ui/AccentButton";
 
 export const Footer = () => {
@@ -20,7 +20,7 @@ export const Footer = () => {
     { name: "YouTube", icon: Youtube, href: "#" },
     { name: "Instagram", icon: Instagram, href: "#" },
     { name: "Twitter/X", icon: Twitter, href: "#" },
-    { name: "Discord", icon: Discord, href: "#" },
+    { name: "TikTok", icon: TikTok, href: "#" },
   ];
 
   return (

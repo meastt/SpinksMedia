@@ -53,7 +53,12 @@ export const Header = () => {
             <Phone className="w-4 h-4" />
             <span>(435) 668-3165</span>
           </div>
-          <AccentButton className="h-10 px-4 text-xs">Book a Shoot</AccentButton>
+          <AccentButton 
+            showIcon={false}
+            className="h-10 px-6 text-xs bg-transparent text-white hover:bg-white hover:text-terracotta border-2 border-white"
+          >
+            Book a Shoot
+          </AccentButton>
         </div>
 
         {/* Mobile: Hamburger */}
@@ -89,7 +94,12 @@ export const Header = () => {
                 <Phone className="w-4 h-4" />
                 <span>(435) 668-3165</span>
               </div>
-              <AccentButton className="w-full">Book a Shoot</AccentButton>
+              <AccentButton 
+                showIcon={false}
+                className="w-full bg-transparent text-white border-2 border-white hover:bg-white hover:text-terracotta"
+              >
+                Book a Shoot
+              </AccentButton>
             </div>
           </motion.div>
         )}
