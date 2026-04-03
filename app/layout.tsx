@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald, DM_Sans } from "next/font/google";
 import Script from "next/script";
+import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${oswald.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
+        <StructuredData />
         {/* Theme restoration script is handled by next/script below for better React integration */}
       </head>
       <body className="antialiased font-sans">
