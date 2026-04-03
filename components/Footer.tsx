@@ -41,7 +41,7 @@ export const Footer = () => {
                 alt="Spinks Media Logo"
                 width={500}
                 height={250}
-                className="h-[144px] w-auto lg:h-[184px]"
+                className="h-[144px] w-auto lg:h-[184px] -ml-4"
               />
             </Link>
 
