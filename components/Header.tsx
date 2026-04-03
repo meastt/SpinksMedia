@@ -41,7 +41,7 @@ export const Header = () => {
               alt="Spinks Media Logo"
               width={500}
               height={250}
-              className="h-[80px] w-auto lg:h-[108px]"
+              className="h-[64px] w-auto lg:h-[86px]"
               priority
             />
           </Link>

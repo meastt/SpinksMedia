@@ -35,17 +35,17 @@ export const Footer = () => {
             {/* Visual Flourish */}
             <div className="w-12 h-1 bg-terracotta mb-8 invisible lg:visible" />
             
-            <Link href="/" className="mb-2 block">
+            <Link href="/" className="mb-0 block">
               <Image
                 src="/images/logo-primary.png"
                 alt="Spinks Media Logo"
                 width={500}
                 height={250}
-                className="h-[144px] w-auto lg:h-[184px] -ml-10"
+                className="h-[144px] w-auto lg:h-[184px]"
               />
             </Link>
 
-            <AccentButton className="min-w-[200px] -mt-10">Book a Shoot</AccentButton>
+            <AccentButton className="min-w-[200px] -mt-4">Book a Shoot</AccentButton>
           </div>
 
           {/* Center: Spacer */}
