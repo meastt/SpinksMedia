@@ -50,9 +50,23 @@ export default function RootLayout({
     <html lang="en" className={`${oswald.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
         <StructuredData />
+        {/* Google Analytics (GA4) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QWTV2L545Z"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-QWTV2L545Z');
+          `}
+        </Script>
         {/* Theme restoration script is handled by next/script below for better React integration */}
       </head>
-      <body className="antialiased font-sans">
+      <body className="antialiased font-sans overflow-x-hidden">
         <Script id="theme-restore" strategy="beforeInteractive">
           {THEME_SCRIPT}
         </Script>
