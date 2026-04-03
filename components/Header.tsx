@@ -11,10 +11,9 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "About", href: "#about" },
-    { name: "Listing Media", href: "#listing-media" },
+    { name: "Packages", href: "/#services" },
+    { name: "Our Process", href: "/process" },
+    { name: "FAQ", href: "/#faq" },
   ];
 
   return (

@@ -42,7 +42,7 @@ export const FAQSection = () => {
   };
 
   return (
-    <section className="bg-[var(--color-off-white)] py-24 md:py-32">
+    <section id="faq" className="bg-[var(--color-off-white)] py-24 md:py-32 scroll-mt-20">
       <div className="container mx-auto max-w-[1280px] px-4">
         {/* Header */}
         <div className="text-center mb-16">

@@ -9,11 +9,9 @@ import { AccentButton } from "./ui/AccentButton";
 export const Footer = () => {
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Team", href: "#team" },
-    { name: "Listing Media", href: "#listing-media" },
-    { name: "Contact", href: "#contact" },
+    { name: "Packages", href: "/#services" },
+    { name: "Process", href: "/process" },
+    { name: "FAQ", href: "/#faq" },
   ];
 
   const socials = [
