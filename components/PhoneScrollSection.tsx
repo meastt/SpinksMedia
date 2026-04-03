@@ -40,7 +40,7 @@ export const PhoneScrollSection = () => {
         </div>
 
         {/* ── PHONE (center) ── */}
-        <div className="relative z-10 w-full max-w-[390px] sm:max-w-[460px] lg:max-w-[360px] flex-shrink-0">
+        <div className="relative z-10 w-full max-w-[351px] sm:max-w-[414px] lg:max-w-[360px] flex-shrink-0">
           {/* Glow ring behind phone */}
           <div
             className="absolute inset-0 rounded-full blur-3xl opacity-20 scale-75"
@@ -114,13 +114,9 @@ export const PhoneScrollSection = () => {
           </div>
 
           {/* Mobile-only stat pills (shown below phone on small screens) */}
-          <div className="flex md:hidden justify-center gap-3 mt-6">
-            <div className="animate-float-slow scale-75 origin-top">
-              <MetricCard icon={Heart} label="Likes" value="78,926" />
-            </div>
-            <div className="animate-float-medium scale-75 origin-top">
-              <MetricCard icon={TrendingUp} label="Views" value="181,705" />
-            </div>
+          <div className="flex md:hidden justify-center gap-3 mt-6 w-full px-4">
+            <MetricCard icon={Heart} label="Likes" value="78,926" className="w-[44vw] min-w-0" />
+            <MetricCard icon={TrendingUp} label="Views" value="181,705" className="w-[44vw] min-w-0" />
           </div>
         </div>
 
