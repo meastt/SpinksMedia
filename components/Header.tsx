@@ -62,8 +62,10 @@ export const Header = () => {
 
         {/* Mobile: Hamburger */}
         <button
-          className="lg:hidden text-white"
+          className="lg:hidden text-white w-10 h-10 flex items-center justify-center p-0 m-0"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

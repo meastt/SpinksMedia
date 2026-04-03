@@ -53,7 +53,7 @@ export const Footer = () => {
           <div className="grid grid-cols-2 gap-8 md:gap-16">
             {/* Quick Links */}
             <div>
-              <h4 className="text-terracotta text-xs font-bold uppercase tracking-widest mb-6 font-dm-sans">Quick Links</h4>
+              <h3 className="text-terracotta text-xs font-bold uppercase tracking-widest mb-6 font-dm-sans">Quick Links</h3>
               <ul className="flex flex-col gap-4">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
@@ -70,7 +70,7 @@ export const Footer = () => {
 
             {/* Socials */}
             <div>
-              <h4 className="text-terracotta text-xs font-bold uppercase tracking-widest mb-6 font-dm-sans">Socials</h4>
+              <h3 className="text-terracotta text-xs font-bold uppercase tracking-widest mb-6 font-dm-sans">Socials</h3>
               <ul className="flex flex-col gap-4">
                 {socials.map((link) => (
                   <li key={link.name}>
