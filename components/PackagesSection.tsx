@@ -113,7 +113,9 @@ export const PackagesSection = () => {
                   src={pkg.image}
                   alt={pkg.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   className="object-cover transition-transform duration-700 hover:scale-105 grayscale-[0.3]"
+                  priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 {/* Name + pill overlay */}

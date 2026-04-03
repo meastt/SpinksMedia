@@ -21,7 +21,7 @@ export const HeroSection = () => {
   );
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-[100vh] w-full overflow-hidden bg-black flex flex-col items-start justify-end pb-20 lg:pb-28">
+    <section className="relative min-h-[90vh] lg:min-h-[100vh] w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-20 md:pt-40 pb-20 lg:pb-28">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -38,7 +38,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Content Container */}
-      <div className="w-full max-w-[1440px] px-6 md:px-12 lg:px-20 relative z-10 flex flex-col items-start text-left">
+      <div className="w-full max-w-[1440px] px-6 md:px-12 lg:px-20 relative z-10 flex flex-col items-center text-center">
         {/* Top Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,14 +50,14 @@ export const HeroSection = () => {
         </motion.div>
 
         {/* H1 Headline – no entrance animation so LCP element is immediately visible */}
-        <h1 className="text-4xl md:text-6xl lg:text-[72px] font-oswald font-extrabold text-white leading-[1.1] mb-8 max-w-4xl">
+        <h1 className="text-4xl md:text-6xl lg:text-[72px] font-oswald font-extrabold text-white leading-[1.1] mb-8 max-w-4xl text-center">
           CINEMATIC CONTENT <span className="text-terracotta">THAT WINS</span>
           <br />
           LISTINGS AND GETS CLIENTS.
         </h1>
 
         {/* Selling Points */}
-        <div className="flex flex-col items-start gap-4 mb-10 max-w-xl">
+        <div className="flex flex-col items-center md:items-center gap-4 mb-10 max-w-xl">
           <SellingPoint
             icon={PlaySquare}
             text="Cinematic 45–60s videos: built to stop the scroll."

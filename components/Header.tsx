@@ -37,11 +37,11 @@ export const Header = () => {
         <div className="absolute left-1/2 -translate-x-1/2">
           <Link href="/">
             <Image
-              src="/images/logo.white.png"
+              src="/images/logo-primary.png"
               alt="Spinks Media Logo"
-              width={160}
-              height={32}
-              className="h-5 w-auto lg:h-7"
+              width={500}
+              height={250}
+              className="h-[120px] w-auto lg:h-[168px]"
               priority
             />
           </Link>

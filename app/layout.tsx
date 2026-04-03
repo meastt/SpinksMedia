@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Oswald, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -47,10 +48,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${oswald.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
-        {/* Inline script runs synchronously: restores theme before styles paint */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {/* Theme restoration script is handled by next/script below for better React integration */}
       </head>
       <body className="antialiased font-sans">
+        <Script id="theme-restore" strategy="beforeInteractive">
+          {THEME_SCRIPT}
+        </Script>
         {children}
       </body>
     </html>

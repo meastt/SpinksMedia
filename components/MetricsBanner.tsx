@@ -34,14 +34,14 @@ const CountUp = ({ value, label }: { value: string; label: string }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-white rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-sm border border-[var(--color-text-dark)]/5 relative overflow-hidden group h-full"
+      className="bg-[var(--color-surface-dark)] rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-2xl border border-white/5 relative overflow-hidden group h-full"
     >
-      <div className="absolute top-0 right-0 w-24 h-24 bg-terracotta/5 -rotate-45 translate-x-12 -translate-y-12 transition-transform group-hover:translate-x-10 group-hover:-translate-y-10" />
+      <div className="absolute top-0 right-0 w-24 h-24 bg-terracotta/10 -rotate-45 translate-x-12 -translate-y-12 transition-transform group-hover:translate-x-10 group-hover:-translate-y-10" />
       
-      <div className="text-4xl md:text-5xl font-oswald font-bold text-black mb-2 relative z-10">
+      <div className="text-4xl md:text-5xl font-oswald font-bold text-white mb-2 relative z-10">
         {displayValue}
       </div>
-      <div className="text-sm font-dm-sans text-gray-500 font-medium uppercase tracking-widest relative z-10 text-center">
+      <div className="text-sm font-dm-sans text-white/60 font-medium uppercase tracking-widest relative z-10 text-center">
         {label}
       </div>
     </motion.div>
@@ -50,7 +50,7 @@ const CountUp = ({ value, label }: { value: string; label: string }) => {
 
 export const MetricsBanner = () => {
   return (
-    <section className="bg-[var(--color-off-white)] pb-24">
+    <section className="relative bg-[var(--color-gold-light)] py-32 border-t border-black/5 overflow-hidden">
       <div className="container mx-auto max-w-[1280px] px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat) => (

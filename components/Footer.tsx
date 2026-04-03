@@ -24,28 +24,28 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-black pt-24 pb-12 overflow-hidden">
+    <footer className="relative bg-[var(--color-black)] pt-16 pb-12 border-t border-white/5 overflow-hidden">
       {/* Decorative Top Line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1280px] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="container mx-auto max-w-[1280px] px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8 mb-12">
           {/* Left: Branding */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col items-start -mt-24">
             {/* Visual Flourish */}
             <div className="w-12 h-1 bg-terracotta mb-8 invisible lg:visible" />
             
-            <Link href="/" className="mb-8 block">
+            <Link href="/" className="mb-2 block">
               <Image
-                src="/images/logo.white.png"
+                src="/images/logo-primary.png"
                 alt="Spinks Media Logo"
-                width={320}
-                height={64}
-                className="h-14 w-auto lg:h-[72px]"
+                width={500}
+                height={250}
+                className="h-[224px] w-auto lg:h-[288px] -ml-10"
               />
             </Link>
 
-            <AccentButton className="min-w-[200px]">Book a Shoot</AccentButton>
+            <AccentButton className="min-w-[200px] -mt-10">Book a Shoot</AccentButton>
           </div>
 
           {/* Center: Spacer */}
@@ -91,12 +91,12 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col gap-2">
+        <div className="pt-8 border-t border-white/5 flex flex-col items-center justify-center gap-8 text-center">
+          <div className="flex flex-col gap-2 items-center text-center">
             <p className="text-muted text-[13px] font-dm-sans">
               © {new Date().getFullYear()} Spinks Media. All rights reserved.
             </p>
-            <p className="text-muted/60 text-[11px] font-dm-sans">
+            <p className="text-muted/60 text-[13px] font-dm-sans">
               Made by your Southern Utah neighbor at{" "}
               <a 
                 href="https://TechRidgeSEO.com" 
@@ -107,10 +107,6 @@ export const Footer = () => {
                 TechRidgeSEO.com
               </a>
             </p>
-          </div>
-          <div className="flex items-center gap-8">
-            <Link href="/privacy" className="text-muted hover:text-white transition-colors text-[13px] font-dm-sans">Privacy Policy</Link>
-            <Link href="/terms" className="text-muted hover:text-white transition-colors text-[13px] font-dm-sans">Terms & Conditions</Link>
           </div>
         </div>
       </div>

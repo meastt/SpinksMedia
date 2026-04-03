@@ -64,6 +64,7 @@ export const CTASection = () => {
                 width={400}
                 height={600}
                 className="w-full h-auto block"
+                priority
               />
             </motion.div>
 
@@ -79,6 +80,7 @@ export const CTASection = () => {
                 src="/images/featured-agent.jpg"
                 alt="Featured Agent"
                 fill
+                sizes="(max-width: 768px) 130px, 160px"
                 className="object-cover z-0"
               />
             </motion.div>
