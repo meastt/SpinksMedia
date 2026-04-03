@@ -9,7 +9,7 @@ import { AccentButton } from "@/components/ui/AccentButton";
 import { notFound } from "next/navigation";
 
 // Define the valid service areas for the geographic SEO hub
-const validAreas. = [
+const validAreas = [
   { slug: "washington", name: "Washington City" },
   { slug: "santa-clara", name: "Santa Clara" },
   { slug: "hurricane", name: "Hurricane" },
@@ -21,7 +21,7 @@ const validAreas. = [
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const area = validAreas.find((a) => a.slug === resolvedParams.slug);
-  
+
   if (!area) {
     return { title: "Location Not Found" };
   }
@@ -58,7 +58,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
       <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 px-4 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-[url('/images/package-full-stable.jpg')] bg-cover bg-center opacity-20 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black to-black pointer-events-none" />
-        
+
         <div className="container mx-auto max-w-[1280px] relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-terracotta bg-terracotta/10 text-white text-xs font-semibold uppercase tracking-widest font-dm-sans mb-6">
             <MapPin className="w-3 h-3 text-terracotta" />
@@ -71,9 +71,9 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             Elevating property listings across {area.name} with cinematic walkthroughs, FAA-licensed drone flights, and HDR photography designed for the modern agent.
           </p>
           <div className="flex gap-4">
-             <Link href="/#packages">
-                <AccentButton className="min-w-[200px] h-14">View {area.name} Packages</AccentButton>
-             </Link>
+            <Link href="/#packages">
+              <AccentButton className="min-w-[200px] h-14">View {area.name} Packages</AccentButton>
+            </Link>
           </div>
         </div>
       </section>
@@ -82,7 +82,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
       <section className="py-24 px-4 bg-[var(--color-surface-card)]">
         <div className="container mx-auto max-w-[1280px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
+
             <div className="p-8 border border-white/5 rounded-3xl bg-[var(--color-surface-dark)]">
               <Camera className="w-10 h-10 text-terracotta mb-6" />
               <h3 className="text-2xl font-oswald text-white mb-3 tracking-wide">HDR Photography</h3>
