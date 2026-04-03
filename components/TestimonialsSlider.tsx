@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export const TestimonialsSlider = () => {
   return (
-    <section className="bg-[#F5F3EF] py-24 overflow-hidden">
+    <section className="bg-[var(--color-off-white)] py-24 overflow-hidden">
       <div className="container mx-auto max-w-[1280px] px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export const TestimonialsSlider = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="min-w-[320px] md:min-w-[400px] bg-white rounded-2xl p-8 shadow-sm border border-black/5 snap-center flex flex-col justify-between"
+              className="min-w-[320px] md:min-w-[400px] bg-white rounded-2xl p-8 shadow-sm border border-[var(--color-text-dark)]/5 snap-center flex flex-col justify-between"
             >
               <div>
                 {/* Stars */}

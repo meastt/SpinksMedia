@@ -1,254 +1,148 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { MetricCard } from "./ui/MetricCard";
-import { FloatingIcon } from "./ui/FloatingIcon";
-import { Heart, TrendingUp, MessageCircle, Share2 } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { Heart, TrendingUp, Share2, MessageCircle } from "lucide-react";
 
 export const PhoneScrollSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      const buildTimeline = (
-        p1: string,
-        p2: string,
-        p3: string,
-        opts: { fromScale: number; toScale: number; exitScale: number; end: string; scrub: number },
-      ) => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top -5%",
-            end: opts.end,
-            pin: innerRef.current,
-            scrub: opts.scrub,
-            anticipatePin: 1,
-          },
-        });
-
-        // Phase 1
-        tl.fromTo(
-          p1,
-          { opacity: 0, scale: opts.fromScale },
-          { opacity: 1, scale: opts.toScale, duration: 1, stagger: 0.2 },
-          0,
-        );
-        tl.to(p1, { opacity: 0, scale: opts.exitScale, duration: 1, stagger: 0.1 }, 1.5);
-
-        // Screen transition 1→2
-        tl.to(".screen-v1", { opacity: 0, duration: 0.5 }, 1.5);
-        tl.fromTo(".screen-v2", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.5);
-
-        // Phase 2
-        tl.fromTo(
-          p2,
-          { opacity: 0, scale: opts.fromScale },
-          { opacity: 1, scale: opts.toScale, duration: 1, stagger: 0.2 },
-          2,
-        );
-        tl.to(p2, { opacity: 0, scale: opts.exitScale, duration: 1, stagger: 0.1 }, 3.5);
-
-        // Screen transition 2→3
-        tl.to(".screen-v2", { opacity: 0, duration: 0.5 }, 3.5);
-        tl.fromTo(".screen-v3", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 3.5);
-
-        // Phase 3 (remains visible as component unpins and scrolls out)
-        tl.fromTo(
-          p3,
-          { opacity: 0, scale: opts.fromScale },
-          { opacity: 1, scale: opts.toScale, duration: 1, stagger: 0.2 },
-          4,
-        );
-      };
-
-      mm.add("(min-width: 768px)", () => {
-        buildTimeline(".phase-1-elements", ".phase-2-elements", ".phase-3-elements", {
-          fromScale: 0.8,
-          toScale: 1,
-          exitScale: 0.8,
-          end: "+=315%",
-          scrub: 1,
-        });
-      });
-
-      mm.add("(max-width: 767px)", () => {
-        // On mobile, the parent element is scaled by GSAP; do not rely on Tailwind scale classes
-        // because GSAP's `scale` transform overrides them.
-        buildTimeline(".phase-1-mobile", ".phase-2-mobile", ".phase-3-mobile", {
-          fromScale: 0.36,
-          toScale: 0.48,
-          exitScale: 0.36,
-          // Give the “scroll stop” more runway and smooth out the feel.
-          end: "+=390%",
-          scrub: 1.5,
-        });
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
-    <div ref={containerRef} className="relative bg-white pt-24">
-      <div ref={innerRef} className="h-screen w-full flex flex-col items-center justify-start overflow-hidden pt-12 pb-8 px-4">
+    <section
+      className="relative pt-8 md:pt-0 pb-24 overflow-hidden"
+      style={{ background: "var(--color-white)" }}
+    >
+      {/* Section Header */}
+      <div className="w-full text-center mb-2 px-4">
+        <h2 className="text-4xl md:text-5xl lg:text-[56px] font-oswald font-bold leading-tight"
+          style={{ color: "var(--color-black)" }}>
+          WE MAKE LISTINGS{" "}
+          <span className="text-terracotta">GO VIRAL</span>
+        </h2>
+        <p className="mt-3 text-lg font-dm-sans font-medium"
+          style={{ color: "var(--color-muted)" }}>
+          Scroll-stopping content that drives real engagement.
+        </p>
+      </div>
 
-        {/* Persistent Header */}
-        <div className="w-full text-center z-40 mb-6 flex-shrink-0">
-          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-oswald font-bold text-black leading-tight">
-            WE MAKE LISTINGS <span className="text-terracotta">GO VIRAL</span>
-          </h2>
-          <p className="text-gray-600 font-dm-sans text-lg mt-2 font-medium">
-            Scroll-stopping content that drives engagement.
-          </p>
+      {/* Phone + Floating Stats Layout */}
+      <div className="relative flex items-center justify-center mx-auto max-w-5xl px-4">
+
+        {/* ── LEFT COLUMN ── */}
+        <div className="hidden md:flex flex-col gap-6 items-end pr-10 flex-1">
+          {/* Top-left card */}
+          <div className="animate-float-slow">
+            <MetricCard icon={Heart} label="Total Likes" value="78,926" />
+          </div>
+          {/* Bottom-left card */}
+          <div className="animate-float-medium">
+            <MetricCard icon={Share2} label="Shares" value="4,812" />
+          </div>
         </div>
 
-        {/* The Phone Container */}
-        {/* Adjusted to let mobile expand significantly using padding bounds while keeping desktop max-width intact */}
-        <div ref={phoneRef} className="relative z-10 w-full max-w-[550px] lg:max-w-[462px] px-4 sm:px-8 lg:px-0 flex items-center justify-center -mt-6 sm:mt-0 flex-grow basis-0 min-h-0">
+        {/* ── PHONE (center) ── */}
+        <div className="relative z-10 w-full max-w-[390px] sm:max-w-[460px] lg:max-w-[360px] flex-shrink-0">
+          {/* Glow ring behind phone */}
+          <div
+            className="absolute inset-0 rounded-full blur-3xl opacity-20 scale-75"
+            style={{ background: "radial-gradient(ellipse, var(--color-gold) 0%, transparent 70%)" }}
+          />
 
-          {/* Phone Frame strictly bound to the image's aspect ratio */}
-          <div className="relative h-full max-h-full w-full max-w-full aspect-[757/1091] flex items-center justify-center">
+          {/* Phone frame + video — new PNG has transparent screen, no finger overlap */}
+          <div className="relative w-full aspect-[9/16]">
+
+            {/* LAYER 1 (z-10): Video — sits BEHIND the phone frame.
+                The transparent screen cutout in iphone-frame.png lets this
+                show through perfectly. No clipping tricks needed. */}
+            <div
+              className="absolute overflow-hidden"
+              style={{
+                top: "14.3%",
+                left: "20.3%",
+                width: "47.1%",
+                height: "56.8%",
+                borderRadius: "20px",
+                zIndex: 30,
+                background: "#000",
+              }}
+            >
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                src="/videos/hero-bg.mp4"
+              />
+              <div className="absolute inset-0 opacity-20" style={{ background: "var(--color-gold)", zIndex: 1 }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" style={{ zIndex: 1 }} />
+              <div className="absolute bottom-8 left-4 text-white font-oswald text-xl tracking-wide drop-shadow-xl" style={{ zIndex: 2 }}>
+                LUXURY ESTATE
+              </div>
+            </div>
+
+            {/* LAYER 2 (z-20): Phone frame — ON TOP of the video.
+                Transparent screen area reveals the video below.
+                Hand/fingers are fully opaque and sit in front naturally. */}
             <Image
-              src="/images/phone-frame.png"
-              alt="Phone Frame"
+              src="/images/iphone-frame4.png"
+              alt="Hand holding phone showing real estate listing video"
               fill
-              sizes="(max-width: 768px) 100vw, 420px"
-              className="object-contain z-20 pointer-events-none"
+              sizes="(max-width: 640px) 320px, (max-width: 1024px) 360px, 390px"
+              className="object-contain pointer-events-none"
+              style={{ zIndex: 10 }}
               priority
             />
 
-            {/* Phone Screen Content (Mock Videos - Rendered ON TOP of the phone screen) */}
-            {/* NOTE: These specific coordinate percentages (top: 17.3%, left: 28.6%, w: 43.8%, h: 63.5%) were manually fine-tuned pixel-by-pixel to perfectly fit the specific black screen dimensions of the phone-frame.PNG graphic. */}
-            <div
-              className="absolute top-[16.3%] left-[29.35%] w-[42.3%] h-[65.5%] max-md:top-[22.6%] max-md:left-[29.85%] max-md:w-[41.3%] max-md:h-[52.8%] bg-black rounded-[18px] xl:rounded-[24px] overflow-hidden z-30"
-            >
-              {/* Phase 1 Video */}
-              <div className="absolute inset-0 screen-v1">
-                <video className="absolute inset-0 w-full h-full object-cover shadow-inner rounded-[18px] xl:rounded-[24px]" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
-                <div className="absolute inset-0 bg-terracotta/20 mix-blend-overlay z-0" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0" />
-                <div className="absolute bottom-10 left-6 text-white font-oswald text-2xl tracking-wide drop-shadow-xl z-10">LUXURY ESTATE</div>
-              </div>
 
-              {/* Phase 2 Video */}
-              <div className="absolute inset-0 screen-v2 opacity-0">
-                <video className="absolute inset-0 w-full h-full object-cover shadow-inner rounded-[18px] xl:rounded-[24px]" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
-                <div className="absolute inset-0 bg-[#2A65C4]/30 mix-blend-overlay z-0" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0" />
-                <div className="absolute bottom-10 left-6 text-white font-oswald text-2xl tracking-wide drop-shadow-xl z-10">URBAN LOFT</div>
-              </div>
+            {/* ── Floating emoji badges pinned to the phone ── */}
+            {/* Top-right of phone */}
+            <div className="absolute top-[12%] right-[8%] z-40 animate-float-fast">
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-xl md:text-2xl">🔥</div>
+            </div>
+            {/* Mid-right of phone */}
+            <div className="absolute top-1/3 right-0 z-40 animate-float-slow">
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-xl md:text-2xl">📈</div>
+            </div>
+            {/* Bottom-left of phone */}
+            <div className="absolute bottom-[18%] left-0 z-40 animate-float-medium">
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-xl md:text-2xl">❤️</div>
+            </div>
+            {/* Top-left of phone */}
+            <div className="absolute top-[12%] left-1 z-40 animate-float-fast">
+              <div className="w-9 h-9 md:w-12 md:h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center text-lg md:text-xl">✨</div>
+            </div>
+          </div>
 
-              {/* Phase 3 Video */}
-              <div className="absolute inset-0 screen-v3 opacity-0">
-                <video className="absolute inset-0 w-full h-full object-cover shadow-inner rounded-[18px] xl:rounded-[24px]" autoPlay muted loop playsInline src="/videos/hero-bg.mp4" />
-                <div className="absolute inset-0 bg-emerald-500/20 mix-blend-overlay z-0" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0" />
-                <div className="absolute bottom-10 left-6 text-white font-oswald text-2xl tracking-wide drop-shadow-xl z-10">DESERT OASIS</div>
-              </div>
+          {/* Mobile-only stat pills (shown below phone on small screens) */}
+          <div className="flex md:hidden justify-center gap-3 mt-6">
+            <div className="animate-float-slow scale-75 origin-top">
+              <MetricCard icon={Heart} label="Likes" value="78,926" />
             </div>
-
-            {/* ============================================= */}
-            {/* DESKTOP Metric Cards (hidden on mobile)       */}
-            {/* ============================================= */}
-
-            {/* Phase 1 - Desktop */}
-            <div className="phase-1-elements absolute top-[15%] -left-4 md:left-[556px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
-              <MetricCard icon={Heart} label="Likes" value="2,200" />
-              <FloatingIcon emoji="🔥" className="absolute -top-8 -right-6 scale-90 rotate-6" />
-            </div>
-            <div className="phase-1-elements absolute bottom-[25%] -right-4 md:-right-80 hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
-              <MetricCard icon={TrendingUp} label="Views" value="78,926" />
-              <FloatingIcon emoji="📈" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
-            </div>
-            <div className="phase-1-elements absolute top-[10%] -right-4 md:-right-[690px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
-              <MetricCard icon={Heart} label="Saves" value="4,812" />
-              <FloatingIcon emoji="❤️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
-            </div>
-
-            {/* Phase 2 - Desktop */}
-            <div className="phase-2-elements absolute -top-[180px] -left-4 md:left-[-120px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
-              <MetricCard icon={Share2} label="Shares" value="1,340" />
-              <FloatingIcon emoji="✨" className="absolute -top-8 -right-6 scale-90 -rotate-6" />
-            </div>
-            <div className="phase-2-elements absolute top-[25%] -left-4 md:left-[122px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
-              <MetricCard icon={Heart} label="Likes" value="756" />
-              <FloatingIcon emoji="😍" className="absolute -top-8 -right-6 scale-90 rotate-12" />
-            </div>
-            <div className="phase-2-elements absolute -top-[100px] -right-4 md:right-[22px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
-              <MetricCard icon={TrendingUp} label="Views" value="20,602" />
-              <FloatingIcon emoji="🚀" className="absolute -top-8 -left-6 scale-90 rotate-6" />
-            </div>
-
-            {/* Phase 3 - Desktop */}
-            <div className="phase-3-elements absolute top-[25%] -left-4 md:-left-82 hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
-              <MetricCard icon={Heart} label="Likes" value="6,700" />
-              <FloatingIcon emoji="⬆️" className="absolute -top-8 -right-6 scale-90 rotate-6" />
-            </div>
-            <div className="phase-3-elements absolute bottom-[15%] -right-4 md:right-[1206px] hidden md:flex xl:block opacity-0 scale-50 md:scale-100 relative w-[260px] z-40">
+            <div className="animate-float-medium scale-75 origin-top">
               <MetricCard icon={TrendingUp} label="Views" value="181,705" />
-              <FloatingIcon emoji="💥" className="absolute -top-8 -left-6 scale-90 -rotate-6" />
             </div>
+          </div>
+        </div>
 
-            {/* ============================================= */}
-            {/* MOBILE Metric Cards (hidden on desktop)       */}
-            {/* Absolutely positioned within the phone frame  */}
-            {/* Final mobile scale is controlled by GSAP.     */}
-            {/* ============================================= */}
-            <div className="absolute inset-0 z-40 md:hidden">
-
-              {/* Phase 1 - Mobile */}
-              <div className="phase-1-mobile absolute top-[8%] -left-[9%] origin-top-left opacity-0">
-                <MetricCard icon={Heart} label="Likes" value="2,200" />
-                <FloatingIcon emoji="🔥" className="absolute -top-6 -right-4 scale-75 rotate-6" />
-              </div>
-              <div className="phase-1-mobile absolute bottom-[22%] -right-[9%] origin-top-right opacity-0">
-                <MetricCard icon={TrendingUp} label="Views" value="78,926" />
-                <FloatingIcon emoji="📈" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
-              </div>
-              <div className="phase-1-mobile absolute top-[38%] -right-[9%] origin-top-right opacity-0">
-                <MetricCard icon={Heart} label="Saves" value="4,812" />
-                <FloatingIcon emoji="❤️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
-              </div>
-
-              {/* Phase 2 - Mobile */}
-              <div className="phase-2-mobile absolute top-[5%] -left-[8%] origin-top-left opacity-0">
-                <MetricCard icon={Share2} label="Shares" value="1,340" />
-                <FloatingIcon emoji="✨" className="absolute -top-6 -right-4 scale-75 -rotate-6" />
-              </div>
-              <div className="phase-2-mobile absolute top-[42%] -left-[9%] origin-top-left opacity-0">
-                <MetricCard icon={Heart} label="Likes" value="756" />
-                <FloatingIcon emoji="😍" className="absolute -top-6 -right-4 scale-75 rotate-12" />
-              </div>
-              <div className="phase-2-mobile absolute top-[10%] -right-[8%] origin-top-right opacity-0">
-                <MetricCard icon={TrendingUp} label="Views" value="20,602" />
-                <FloatingIcon emoji="🚀" className="absolute -top-6 -left-4 scale-75 rotate-6" />
-              </div>
-
-              {/* Phase 3 - Mobile */}
-              <div className="phase-3-mobile absolute top-[25%] -left-[9%] origin-top-left opacity-0">
-                <MetricCard icon={Heart} label="Likes" value="6,700" />
-                <FloatingIcon emoji="⬆️" className="absolute -top-6 -right-4 scale-75 rotate-6" />
-              </div>
-              <div className="phase-3-mobile absolute bottom-[15%] -right-[8%] origin-top-right opacity-0">
-                <MetricCard icon={TrendingUp} label="Views" value="181,705" />
-                <FloatingIcon emoji="💥" className="absolute -top-6 -left-4 scale-75 -rotate-6" />
-              </div>
-            </div>
-
+        {/* ── RIGHT COLUMN ── */}
+        <div className="hidden md:flex flex-col gap-6 items-start pl-10 flex-1">
+          {/* Top-right card */}
+          <div className="animate-float-medium">
+            <MetricCard icon={TrendingUp} label="Total Views" value="181,705" />
+          </div>
+          {/* Bottom-right card */}
+          <div className="animate-float-slow">
+            <MetricCard icon={MessageCircle} label="Comments" value="2,340" />
           </div>
         </div>
 
       </div>
-    </div>
+
+      {/* Bottom caption */}
+      <p className="text-center mt-14 text-sm font-dm-sans uppercase tracking-widest"
+        style={{ color: "var(--color-muted)" }}>
+        Real numbers from real listings — not estimates
+      </p>
+    </section>
   );
 };

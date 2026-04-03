@@ -42,7 +42,7 @@ export const FAQSection = () => {
   };
 
   return (
-    <section className="bg-[#F5F3EF] py-24 md:py-32">
+    <section className="bg-[var(--color-off-white)] py-24 md:py-32">
       <div className="container mx-auto max-w-[1280px] px-4">
         {/* Header */}
         <div className="text-center mb-16">
@@ -96,7 +96,7 @@ export const FAQSection = () => {
               className="flex flex-col gap-4"
             >
               {activeCategory.questions.map((faq, idx) => (
-                <div key={idx} className="bg-white rounded-2xl p-2 shadow-sm border border-black/5">
+                <div key={idx} className="bg-white rounded-2xl p-2 shadow-sm border border-[var(--color-text-dark)]/5">
                   <AccordionItem 
                     title={faq.question} 
                     content={faq.answer} 
@@ -114,7 +114,7 @@ export const FAQSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mt-10 bg-black rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left"
+          className="max-w-4xl mx-auto mt-10 bg-[var(--color-black)] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left"
         >
           <div>
             <h3 className="text-white font-oswald text-2xl font-bold mb-2">STILL HAVE QUESTIONS?</h3>

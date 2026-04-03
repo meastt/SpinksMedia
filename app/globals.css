@@ -1,35 +1,249 @@
 @import "tailwindcss";
 
-:root {
-  /* Color Palette */
+/* ================================================================
+   THEME 1 — EMBER (default) — Black + Red Rock Terracotta
+   Southern Utah desert brand — the original identity
+================================================================ */
+:root,
+[data-theme="ember"] {
   --color-black: #1A1A1A;
   --color-dark: #2B2B2B;
   --color-white: #FFFFFF;
   --color-off-white: #F5F3EF;
-  
-  /* Spinks Media Terracotta Accents */
-  --color-gold: #C4512A;      /* Primary accent - Red Rock */
-  --color-gold-light: #F5DCD3; /* Light sandstone tint */
-  --color-gold-dark: #8B3219;  /* Shaded canyon tone */
-  
+
+  /* Primary accent */
+  --color-gold: #C4512A;
+  --color-gold-light: #F5DCD3;
+  --color-gold-dark: #8B3219;
+
+  /* Secondary accent */
+  --color-accent2: #E0815A;
+  --color-accent2-light: #FAEADF;
+  --color-accent2-dark: #A04422;
+
+  /* Tertiary accent */
+  --color-accent3: #F5A670;
+  --color-accent3-light: #FDE8D4;
+  --color-accent3-dark: #C4722A;
+
   --color-text-light: #E8E8E8;
   --color-text-dark: #333333;
   --color-muted: #888888;
+
+  /* Surface colors */
+  --color-surface-dark: #0c0d11;
+  --color-surface-mid: #13141a;
+  --color-surface-card: #1a1b21;
+  --color-package-bg: #F5F3EF;
 }
 
+/* ================================================================
+   THEME 2 — SLATE ROYAL — Charcoal Grey + Royal Blue
+   Modern corporate authority with cold-steel precision
+================================================================ */
+html[data-theme="slate-royal"] {
+  --color-black: #12151A;
+  --color-dark: #1E2128;
+  --color-white: #FFFFFF;
+  --color-off-white: #EDF1F7;
+
+  /* Primary accent — Royal Blue */
+  --color-gold: #2563EB;
+  --color-gold-light: #DBEAFE;
+  --color-gold-dark: #1D4ED8;
+
+  /* Secondary accent — Steel Periwinkle */
+  --color-accent2: #60A5FA;
+  --color-accent2-light: #EFF6FF;
+  --color-accent2-dark: #3B82F6;
+
+  /* Tertiary accent — Slate Silver */
+  --color-accent3: #94A3B8;
+  --color-accent3-light: #F1F5F9;
+  --color-accent3-dark: #64748B;
+
+  --color-text-light: #E2E8F0;
+  --color-text-dark: #1E293B;
+  --color-muted: #7A8BA0;
+
+  /* Surface colors */
+  --color-surface-dark: #0A0D12;
+  --color-surface-mid: #131720;
+  --color-surface-card: #1A2030;
+  --color-package-bg: #EDF1F7;
+}
+
+/* ================================================================
+   THEME 3 — ONYX MINT — Deep Onyx + Electric Mint
+   Sleek, modern, tech-forward energy for youthful professionals
+================================================================ */
+html[data-theme="onyx-mint"] {
+  --color-black: #0E0E0E;
+  --color-dark: #181818;
+  --color-white: #FFFFFF;
+  --color-off-white: #F0FAF7;
+
+  /* Primary accent — Electric Mint */
+  --color-gold: #10D9A0;
+  --color-gold-light: #D1FAF0;
+  --color-gold-dark: #0AAA7B;
+
+  /* Secondary accent — Cyber Teal */
+  --color-accent2: #06B6D4;
+  --color-accent2-light: #CFFAFE;
+  --color-accent2-dark: #0891B2;
+
+  /* Tertiary accent — Warm Gold */
+  --color-accent3: #F59E0B;
+  --color-accent3-light: #FEF3C7;
+  --color-accent3-dark: #D97706;
+
+  --color-text-light: #E4F5F1;
+  --color-text-dark: #142E26;
+  --color-muted: #6B8C87;
+
+  /* Surface colors */
+  --color-surface-dark: #080808;
+  --color-surface-mid: #111111;
+  --color-surface-card: #191919;
+  --color-package-bg: #F0FAF7;
+}
+
+/* ================================================================
+   THEME 4 — NAVY CRIMSON — Midnight Navy + Crimson Red
+   Bold prestige with old-world confidence and modern edge
+================================================================ */
+html[data-theme="navy-crimson"] {
+  --color-black: #0D1B2A;
+  --color-dark: #162233;
+  --color-white: #FFFFFF;
+  --color-off-white: #F8F5EF;
+
+  /* Primary accent — Crimson Red */
+  --color-gold: #DC2626;
+  --color-gold-light: #FEE2E2;
+  --color-gold-dark: #B91C1C;
+
+  /* Secondary accent — Warm Pearl Gold */
+  --color-accent2: #D4A017;
+  --color-accent2-light: #FEF9E7;
+  --color-accent2-dark: #A87D12;
+
+  /* Tertiary accent — Soft Champagne */
+  --color-accent3: #E8CDA0;
+  --color-accent3-light: #FDF8EF;
+  --color-accent3-dark: #C8A96A;
+
+  --color-text-light: #E8EDF4;
+  --color-text-dark: #1A2D3F;
+  --color-muted: #7A8FA8;
+
+  /* Surface colors */
+  --color-surface-dark: #070F18;
+  --color-surface-mid: #0F1A26;
+  --color-surface-card: #162233;
+  --color-package-bg: #F0F4F8;
+}
+
+/* ================================================================
+   THEME 5 — VOID VIOLET — Deepspace + Tech-Violet + Dopamine
+   2026 "dark-first dopamine" trend — rich purple depth with electric
+   neon accent. Represents forward-thinking digital energy.
+   Inspired by: electric purple / tech-violet movement, ambient
+   dark modes used in SaaS & high-end media platforms.
+================================================================ */
+html[data-theme="void-violet"] {
+  --color-black: #0C0A1A;
+  --color-dark: #13102B;
+  --color-white: #FFFFFF;
+  --color-off-white: #F3F0FF;
+
+  /* Primary accent — Tech-Violet (electric, digital-forward) */
+  --color-gold: #7C3AED;
+  --color-gold-light: #EDE9FE;
+  --color-gold-dark: #5B21B6;
+
+  /* Secondary accent — Dopamine Magenta (mood-boosting pop) */
+  --color-accent2: #D946EF;
+  --color-accent2-light: #FDF4FF;
+  --color-accent2-dark: #A21CAF;
+
+  /* Tertiary accent — Neon Indigo (bridges the two) */
+  --color-accent3: #818CF8;
+  --color-accent3-light: #EEF2FF;
+  --color-accent3-dark: #4F46E5;
+
+  --color-text-light: #EDE9FE;
+  --color-text-dark: #1E1A3A;
+  --color-muted: #8B8AAE;
+
+  /* Surface colors — deep space, not flat black */
+  --color-surface-dark: #070614;
+  --color-surface-mid: #0F0C22;
+  --color-surface-card: #171430;
+  --color-package-bg: #F3F0FF;
+}
+
+/* ================================================================
+   THEME 6 — AURORA FOG — Warm Charcoal + Emergence Teal + Amber
+   2026 "neo-earth tones meets future neutrals" — the warm, organic
+   dark background softened with luminous teal and rich amber.
+   Inspired by: aurora gradient aesthetics, editorial cool-warm mix,
+   and the dopamine-earth collision trend for luxury brands.
+================================================================ */
+html[data-theme="aurora-fog"] {
+  --color-black: #1C1917;
+  --color-dark: #292524;
+  --color-white: #FFFFFF;
+  --color-off-white: #F5F0EA;
+
+  /* Primary accent — Emergence Teal (alive, signal-in-fog feel) */
+  --color-gold: #2DD4BF;
+  --color-gold-light: #CCFBF1;
+  --color-gold-dark: #0F9380;
+
+  /* Secondary accent — Golden Amber (earthy warmth, dopamine joy) */
+  --color-accent2: #F59E0B;
+  --color-accent2-light: #FEF3C7;
+  --color-accent2-dark: #B45309;
+
+  /* Tertiary accent — Blush Rose (soft contrast, accessible warmth) */
+  --color-accent3: #FB7185;
+  --color-accent3-light: #FFF1F2;
+  --color-accent3-dark: #E11D48;
+
+  --color-text-light: #F5F0EA;
+  --color-text-dark: #292524;
+  --color-muted: #9C8E84;
+
+  /* Surface colors — warm stone, not cold black */
+  --color-surface-dark: #120F0E;
+  --color-surface-mid: #1C1917;
+  --color-surface-card: #2A2320;
+  --color-package-bg: #F5F0EA;
+}
+
+
+/* ================================================================
+   TAILWIND THEME BRIDGE
+================================================================ */
 @theme {
   --font-oswald: var(--font-oswald);
   --font-dm-sans: var(--font-dm-sans);
-  
+
   --color-terracotta: var(--color-gold);
   --color-terracotta-light: var(--color-gold-light);
   --color-terracotta-dark: var(--color-gold-dark);
 }
 
+/* ================================================================
+   BASE STYLES
+================================================================ */
 @layer base {
   body {
     @apply bg-[var(--color-black)] text-[var(--color-text-light)] antialiased;
     font-family: inherit;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -41,12 +255,29 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom Utilities */
+/* Smooth theme transitions */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ================================================================
+   CUSTOM UTILITIES
+================================================================ */
 .text-terracotta { color: var(--color-gold); }
 .bg-terracotta { background-color: var(--color-gold); }
 .border-terracotta { border-color: var(--color-gold); }
 
-/* GSAP Pinning Fixes */
+/* Accent2 utilities */
+.text-accent2 { color: var(--color-accent2); }
+.bg-accent2 { background-color: var(--color-accent2); }
+
+/* Accent3 utilities */
+.text-accent3 { color: var(--color-accent3); }
+.bg-accent3 { background-color: var(--color-accent3); }
+
+/* ================================================================
+   GSAP / SCROLL FIXES
+================================================================ */
 .gsap-pin-spacer {
   pointer-events: none !important;
 }
@@ -59,3 +290,24 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ================================================================
+   FLOAT ANIMATIONS — used by PhoneScrollSection badge icons
+================================================================ */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-10px) rotate(1.5deg); }
+}
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-7px) rotate(-1.5deg); }
+}
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-5px) rotate(2deg); }
+}
+
+.animate-float-slow   { animation: floatSlow   4.5s ease-in-out infinite; }
+.animate-float-medium { animation: floatMedium 3.5s ease-in-out infinite; }
+.animate-float-fast   { animation: floatFast   2.8s ease-in-out infinite; }
+

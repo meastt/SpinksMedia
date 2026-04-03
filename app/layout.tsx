@@ -24,13 +24,32 @@ export const metadata: Metadata = {
   },
 };
 
+// Inline script to restore saved theme before first paint (prevents FOUC)
+const THEME_SCRIPT = `
+  (function() {
+    try {
+      var t = localStorage.getItem('spinks-media-theme');
+      var valid = ['ember','slate-royal','onyx-mint','navy-crimson','void-violet','aurora-fog'];
+      if (t && valid.indexOf(t) !== -1) {
+        document.documentElement.setAttribute('data-theme', t);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'ember');
+      }
+    } catch(e) {}
+  })();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${oswald.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${oswald.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Inline script runs synchronously: restores theme before styles paint */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body className="antialiased font-sans">
         {children}
       </body>

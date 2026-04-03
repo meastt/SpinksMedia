@@ -68,7 +68,7 @@ const TruncatedDesc = ({ text }: { text: string }) => {
 /* ─── Main section ─── */
 export const PackagesSection = () => {
   return (
-    <section id="services" className="bg-[#0c0d11] py-24 md:py-32 scroll-mt-16">
+    <section id="services" className="bg-[var(--color-surface-dark)] py-24 md:py-32 scroll-mt-16">
       <div className="container mx-auto max-w-[1280px] px-4 text-center">
         {/* Header */}
         <div className="max-w-3xl mx-auto mb-16">
@@ -96,8 +96,8 @@ export const PackagesSection = () => {
               transition={{ delay: index * 0.08 }}
               className={`relative rounded-2xl overflow-hidden flex flex-col text-left transition-transform ${
                 pkg.popular
-                  ? "bg-[#1a1b21] border border-terracotta/60 shadow-[0_0_40px_rgba(233,121,41,0.18)] scale-[1.03] -my-3 z-10"
-                  : "bg-[#13141a] border border-white/5"
+                  ? "bg-[var(--color-surface-card)] border border-terracotta/60 shadow-[0_0_40px_rgba(196,81,42,0.18)] scale-[1.03] -my-3 z-10"
+                  : "bg-[var(--color-surface-mid)] border border-white/5"
               }`}
             >
               {/* Most Popular Badge */}
