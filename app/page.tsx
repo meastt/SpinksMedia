@@ -13,7 +13,7 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-[var(--color-black)] overflow-clip">
       <Header />
       <HeroSection />
       <PhoneScrollSection />
