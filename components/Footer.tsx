@@ -11,6 +11,7 @@ export const Footer = () => {
     { name: "Home", href: "/" },
     { name: "Packages", href: "/#services" },
     { name: "Process", href: "/process" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "FAQ", href: "/#faq" },
   ];
 
