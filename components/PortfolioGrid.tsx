@@ -70,7 +70,7 @@ export const PortfolioGrid = () => {
                 >
                   <Image
                     src={image.src}
-                    alt={image.alt}
+                    alt={`Spinks Media portfolio image ${index + 1}`}
                     fill
                     sizes={
                       index % 9 === 0
@@ -84,13 +84,10 @@ export const PortfolioGrid = () => {
                   <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black/35 text-white opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
                     <Maximize2 className="h-4 w-4" />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-terracotta font-dm-sans">
-                      {image.category}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity group-hover:opacity-100">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white font-dm-sans">
+                      View larger
                     </p>
-                    <h3 className="mt-1 text-xl font-bold uppercase text-white font-oswald">
-                      {image.title}
-                    </h3>
                   </div>
                 </div>
               </motion.button>

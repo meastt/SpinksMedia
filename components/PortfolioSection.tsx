@@ -101,7 +101,7 @@ export const PortfolioSection = () => {
           >
             <Image
               src={activeImage.src}
-              alt={activeImage.alt}
+              alt={`Spinks Media portfolio image ${currentIndex + 1}`}
               fill
               sizes="(max-width: 1024px) 100vw, 70vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -113,12 +113,9 @@ export const PortfolioSection = () => {
               Click to enlarge
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-terracotta font-dm-sans">
-                {activeImage.category}
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-terracotta font-dm-sans">
+                Portfolio image {currentIndex + 1} of {homepagePortfolioImages.length}
               </p>
-              <h3 className="text-4xl font-bold uppercase text-white md:text-6xl font-oswald">
-                {activeImage.title}
-              </h3>
             </div>
           </motion.button>
 
@@ -138,7 +135,7 @@ export const PortfolioSection = () => {
                   <button
                     type="button"
                     key={image.id}
-                    aria-label={`Show ${image.title}`}
+                    aria-label={`Show portfolio image ${index + 1}`}
                     onClick={() => setCurrentIndex(index)}
                     className={`relative aspect-[4/3] overflow-hidden rounded-xl border transition-all ${
                       index === currentIndex
@@ -148,7 +145,7 @@ export const PortfolioSection = () => {
                   >
                     <Image
                       src={image.src}
-                      alt={image.alt}
+                      alt={`Spinks Media portfolio thumbnail ${index + 1}`}
                       fill
                       sizes="(max-width: 1024px) 25vw, 180px"
                       className="object-cover"

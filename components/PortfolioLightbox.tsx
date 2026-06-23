@@ -62,7 +62,7 @@ export const PortfolioLightbox = ({
           exit={{ opacity: 0 }}
           role="dialog"
           aria-modal="true"
-          aria-label={`${activeImage.title} enlarged portfolio image`}
+          aria-label={`Portfolio image ${activeIndex + 1} enlarged view`}
           onClick={onClose}
         >
           <button
@@ -112,7 +112,7 @@ export const PortfolioLightbox = ({
           >
             <Image
               src={activeImage.src}
-              alt={activeImage.alt}
+              alt={`Spinks Media portfolio image ${activeIndex + 1}`}
               fill
               sizes="100vw"
               className="object-contain"
@@ -122,14 +122,11 @@ export const PortfolioLightbox = ({
 
             <div className="absolute bottom-0 left-1/2 w-[min(100%,720px)] -translate-x-1/2 rounded-2xl border border-white/10 bg-black/60 px-5 py-4 text-center text-white backdrop-blur">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-terracotta font-dm-sans">
-                {activeImage.category}
+                Portfolio
               </p>
               <h2 className="mt-1 text-2xl font-oswald uppercase tracking-tight">
-                {activeImage.title}
+                Image {activeIndex + 1} of {images.length}
               </h2>
-              <p className="mt-1 text-xs text-white/55 font-dm-sans">
-                {activeIndex + 1} / {images.length}
-              </p>
             </div>
           </motion.div>
         </motion.div>
