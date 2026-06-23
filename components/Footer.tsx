@@ -3,9 +3,15 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Phone, Youtube } from "lucide-react";
+import { Instagram, Mail, Phone, Youtube } from "lucide-react";
 import { AccentButton } from "./ui/AccentButton";
-import { ownerPhoneHref, ownerPhoneNumber, socialUrls } from "@/data/contact";
+import {
+  ownerEmail,
+  ownerEmailHref,
+  ownerPhoneHref,
+  ownerPhoneNumber,
+  socialUrls,
+} from "@/data/contact";
 
 export const Footer = () => {
   const quickLinks = [
@@ -53,6 +59,14 @@ export const Footer = () => {
             >
               <Phone className="w-4 h-4 text-terracotta" />
               <span>{ownerPhoneNumber}</span>
+            </a>
+            <a
+              href={ownerEmailHref}
+              className="mt-3 flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-white font-dm-sans"
+              aria-label={`Email Spinks Media at ${ownerEmail}`}
+            >
+              <Mail className="w-4 h-4 text-terracotta" />
+              <span>{ownerEmail}</span>
             </a>
           </div>
 

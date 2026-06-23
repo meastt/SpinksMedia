@@ -1,5 +1,5 @@
 import React from 'react';
-import { ownerPhoneNumber, socialUrls } from "@/data/contact";
+import { ownerEmail, ownerPhoneNumber, socialUrls } from "@/data/contact";
 
 export const StructuredData = () => {
   const schema = {
@@ -11,6 +11,7 @@ export const StructuredData = () => {
         "name": "Spinks Media",
         "image": "https://spinksmedia.com/images/logo-primary.png",
         "telephone": ownerPhoneNumber,
+        "email": ownerEmail,
         "url": "https://spinksmedia.com",
         "description": "Leading real estate media company in St. George, Utah. Specializing in cinematic listing videos, drone videography, and scroll-stopping social media content for top producers.",
         "address": {
