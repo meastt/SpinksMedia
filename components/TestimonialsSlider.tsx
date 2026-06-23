@@ -39,7 +39,7 @@ export const TestimonialsSlider = () => {
                 
                 {/* Body */}
                 <p className="text-black font-dm-sans text-lg italic leading-relaxed mb-8">
-                  "{testimonial.text}"
+                  &ldquo;{testimonial.text}&rdquo;
                 </p>
               </div>
 

@@ -44,7 +44,7 @@ export const ProcessSection = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-[56px] font-oswald font-bold text-white mb-4"
           >
-            IT'S AS EASY AS <span className="text-terracotta">ONE, TWO, THREE.</span>
+            IT&apos;S AS EASY AS <span className="text-terracotta">ONE, TWO, THREE.</span>
           </motion.h2>
           <div className="flex items-center justify-center gap-2 group">
             <span className="text-muted font-dm-sans">Learn more about our process.</span>

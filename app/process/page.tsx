@@ -26,7 +26,7 @@ export default function ProcessPage() {
             Our Process & <span className="text-terracotta">Standards</span>
           </h1>
           <p className="text-lg md:text-xl text-muted font-dm-sans max-w-2xl mx-auto leading-relaxed">
-            We don't just shoot houses. We engineer media designed specifically to dominate
+            We don&apos;t just shoot houses. We engineer media designed specifically to dominate
             social algorithms and win you your next listing in St. George. Here are the facts behind the lens.
           </p>
         </div>

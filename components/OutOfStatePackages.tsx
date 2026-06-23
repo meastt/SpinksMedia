@@ -6,7 +6,6 @@ import { outOfStatePackages } from "@/data/outOfStatePackages";
 import { ownerPhoneHref } from "@/data/contact";
 import { AccordionItem } from "./ui/AccordionItem";
 import { AccentButton } from "./ui/AccentButton";
-import Image from "next/image";
 
 export const OutOfStatePackages = () => {
   return (

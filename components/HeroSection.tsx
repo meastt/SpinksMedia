@@ -1,26 +1,25 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { MapPin, PlaySquare, Pencil, User } from "lucide-react";
+import { MapPin, PlaySquare, Pencil, User, type LucideIcon } from "lucide-react";
 import { AccentButton } from "./ui/AccentButton";
 import { OutlineButton } from "./ui/OutlineButton";
 import { motion } from "framer-motion";
 import { ownerPhoneHref } from "@/data/contact";
 
-export const HeroSection = () => {
-  const SellingPoint = ({ icon: Icon, text }: { icon: any; text: string }) => (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      className="flex items-center gap-3 text-white/90"
-    >
-      <Icon className="w-5 h-5 text-terracotta flex-shrink-0" />
-      <span className="text-base font-dm-sans leading-tight">{text}</span>
-    </motion.div>
-  );
+const SellingPoint = ({ icon: Icon, text }: { icon: LucideIcon; text: string }) => (
+  <motion.div
+    initial={{ opacity: 0, x: -20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    className="flex items-center gap-3 text-white/90"
+  >
+    <Icon className="w-5 h-5 text-terracotta flex-shrink-0" />
+    <span className="text-base font-dm-sans leading-tight">{text}</span>
+  </motion.div>
+);
 
+export const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] lg:min-h-[100vh] w-full overflow-hidden bg-black flex flex-col items-center justify-center pt-20 md:pt-40 pb-20 lg:pb-28">
       {/* Background Video */}

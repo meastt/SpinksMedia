@@ -83,6 +83,11 @@ const THEMES: Theme[] = [
 const STORAGE_KEY = "spinks-media-theme";
 const DEFAULT_THEME: ThemeId = "ember";
 
+const applyTheme = (id: ThemeId) => {
+  document.documentElement.setAttribute("data-theme", id);
+  localStorage.setItem(STORAGE_KEY, id);
+};
+
 export const ThemeSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTheme, setActiveTheme] = useState<ThemeId>(DEFAULT_THEME);
@@ -97,11 +102,6 @@ export const ThemeSwitcher = () => {
       applyTheme(DEFAULT_THEME);
     }
   }, []);
-
-  const applyTheme = (id: ThemeId) => {
-    document.documentElement.setAttribute("data-theme", id);
-    localStorage.setItem(STORAGE_KEY, id);
-  };
 
   const handleSelect = (id: ThemeId) => {
     setActiveTheme(id);

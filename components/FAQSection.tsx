@@ -119,7 +119,7 @@ export const FAQSection = () => {
         >
           <div>
             <h3 className="text-white font-oswald text-2xl font-bold mb-2">STILL HAVE QUESTIONS?</h3>
-            <p className="text-muted font-dm-sans">Still can't find the answer? Contact us here:</p>
+            <p className="text-muted font-dm-sans">Still can&apos;t find the answer? Contact us here:</p>
           </div>
           <AccentButton href={ownerPhoneHref} className="min-w-[200px]">
             Contact Us
