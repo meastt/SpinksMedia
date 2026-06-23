@@ -1,4 +1,5 @@
 import React from 'react';
+import { ownerPhoneNumber, socialUrls } from "@/data/contact";
 
 export const StructuredData = () => {
   const schema = {
@@ -9,7 +10,7 @@ export const StructuredData = () => {
         "@id": "https://spinksmedia.com/#localbusiness",
         "name": "Spinks Media",
         "image": "https://spinksmedia.com/images/logo-primary.png",
-        "telephone": "(435) 668-3165",
+        "telephone": ownerPhoneNumber,
         "url": "https://spinksmedia.com",
         "description": "Leading real estate media company in St. George, Utah. Specializing in cinematic listing videos, drone videography, and scroll-stopping social media content for top producers.",
         "address": {
@@ -24,8 +25,8 @@ export const StructuredData = () => {
           "longitude": -113.5684
         },
         "sameAs": [
-          "https://www.instagram.com/spinksmedia",
-          "https://www.facebook.com/spinksmedia"
+          socialUrls.youtube,
+          socialUrls.instagram
         ],
         "areaServed": [
           {

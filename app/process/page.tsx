@@ -4,8 +4,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ShieldCheck, Clock, Video, Camera } from "lucide-react";
-import Link from "next/link";
 import { AccentButton } from "@/components/ui/AccentButton";
+import { ownerPhoneHref } from "@/data/contact";
 
 export const metadata: Metadata = {
   title: "Media Process & Standards | Spinks Media St. George",
@@ -100,9 +100,9 @@ export default function ProcessPage() {
       {/* Booking CTA Mini */}
       <section className="py-24 px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-oswald text-white mb-6 uppercase">Ready to elevate your listings?</h2>
-        <Link href="/#packages">
-           <AccentButton className="min-w-[200px] h-14">View Our Packages</AccentButton>
-        </Link>
+        <AccentButton href={ownerPhoneHref} className="min-w-[200px] h-14">
+          View Our Packages
+        </AccentButton>
       </section>
 
       <Footer />

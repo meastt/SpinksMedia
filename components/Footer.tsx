@@ -3,8 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Youtube, Twitter, Music as TikTok } from "lucide-react";
+import { Instagram, Phone, Youtube } from "lucide-react";
 import { AccentButton } from "./ui/AccentButton";
+import { ownerPhoneHref, ownerPhoneNumber, socialUrls } from "@/data/contact";
 
 export const Footer = () => {
   const quickLinks = [
@@ -16,10 +17,8 @@ export const Footer = () => {
   ];
 
   const socials = [
-    { name: "YouTube", icon: Youtube, href: "#" },
-    { name: "Instagram", icon: Instagram, href: "#" },
-    { name: "Twitter/X", icon: Twitter, href: "#" },
-    { name: "TikTok", icon: TikTok, href: "#" },
+    { name: "YouTube", icon: Youtube, href: socialUrls.youtube },
+    { name: "Instagram", icon: Instagram, href: socialUrls.instagram },
   ];
 
   return (
@@ -44,7 +43,17 @@ export const Footer = () => {
               />
             </Link>
 
-            <AccentButton className="min-w-[200px] -mt-4">Book a Shoot</AccentButton>
+            <AccentButton href={ownerPhoneHref} className="min-w-[200px] -mt-4">
+              Book a Shoot
+            </AccentButton>
+            <a
+              href={ownerPhoneHref}
+              className="mt-5 flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-white font-dm-sans"
+              aria-label={`Call Spinks Media at ${ownerPhoneNumber}`}
+            >
+              <Phone className="w-4 h-4 text-terracotta" />
+              <span>{ownerPhoneNumber}</span>
+            </a>
           </div>
 
           {/* Center: Spacer */}
@@ -75,13 +84,15 @@ export const Footer = () => {
               <ul className="flex flex-col gap-4">
                 {socials.map((link) => (
                   <li key={link.name}>
-                    <Link
+                    <a
                       href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 text-muted hover:text-white transition-colors font-dm-sans text-sm"
                     >
                       <link.icon className="w-4 h-4" />
                       <span>{link.name}</span>
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>

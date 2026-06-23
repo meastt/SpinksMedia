@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { packages } from "@/data/packages";
+import { ownerPhoneHref } from "@/data/contact";
 import { AccentButton } from "./ui/AccentButton";
 import Image from "next/image";
 import { ChevronDown, ChevronRight } from "lucide-react";
@@ -158,7 +159,7 @@ export const PackagesSection = () => {
                 </div>
 
                 {/* CTA */}
-                <AccentButton className="w-full mt-6" showIcon={false}>
+                <AccentButton href={ownerPhoneHref} className="w-full mt-6" showIcon={false}>
                   <span className="flex items-center justify-center gap-2">
                     Explore Package <ChevronRight className="w-4 h-4" />
                   </span>

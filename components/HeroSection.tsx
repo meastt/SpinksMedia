@@ -6,6 +6,7 @@ import { MapPin, PlaySquare, Pencil, User } from "lucide-react";
 import { AccentButton } from "./ui/AccentButton";
 import { OutlineButton } from "./ui/OutlineButton";
 import { motion } from "framer-motion";
+import { ownerPhoneHref } from "@/data/contact";
 
 export const HeroSection = () => {
   const SellingPoint = ({ icon: Icon, text }: { icon: any; text: string }) => (
@@ -80,7 +81,9 @@ export const HeroSection = () => {
           className="flex flex-col sm:flex-row gap-4"
         >
           <OutlineButton className="min-w-[180px]">Explore Features</OutlineButton>
-          <AccentButton className="min-w-[180px]">Our Packages</AccentButton>
+          <AccentButton href={ownerPhoneHref} className="min-w-[180px]">
+            Our Packages
+          </AccentButton>
         </motion.div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { faqData } from "@/data/faq";
+import { ownerPhoneHref } from "@/data/contact";
 import { AccordionItem } from "./ui/AccordionItem";
 import { AccentButton } from "./ui/AccentButton";
 import { clsx, type ClassValue } from "clsx";
@@ -120,7 +121,9 @@ export const FAQSection = () => {
             <h3 className="text-white font-oswald text-2xl font-bold mb-2">STILL HAVE QUESTIONS?</h3>
             <p className="text-muted font-dm-sans">Still can't find the answer? Contact us here:</p>
           </div>
-          <AccentButton className="min-w-[200px]">Contact Us</AccentButton>
+          <AccentButton href={ownerPhoneHref} className="min-w-[200px]">
+            Contact Us
+          </AccentButton>
         </motion.div>
       </div>
     </section>
