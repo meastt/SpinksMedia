@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { PhoneScrollSection } from "@/components/PhoneScrollSection";
 import { ProcessSection } from "@/components/ProcessSection";
+import { PortfolioSection } from "@/components/PortfolioSection";
 import { PackagesSection } from "@/components/PackagesSection";
 import { OutOfStatePackages } from "@/components/OutOfStatePackages";
 import { MetricsBanner } from "@/components/MetricsBanner";
@@ -18,6 +19,7 @@ export default function Home() {
       <HeroSection />
       <PhoneScrollSection />
       <ProcessSection />
+      <PortfolioSection />
       <PackagesSection />
       <OutOfStatePackages />
       <MetricsBanner />

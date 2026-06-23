@@ -9,7 +9,10 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-interface OutlineButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart"> {}
+type OutlineButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart"
+>;
 
 export const OutlineButton = ({
   children,

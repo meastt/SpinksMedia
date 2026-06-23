@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
-import { MapPin, Camera, Video, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { MapPin, Camera, Video } from "lucide-react";
 import { AccentButton } from "@/components/ui/AccentButton";
+import { ownerPhoneHref } from "@/data/contact";
 import { notFound } from "next/navigation";
 
 // Define the valid service areas for the geographic SEO hub
@@ -71,9 +71,9 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             Elevating property listings across {area.name} with cinematic walkthroughs, FAA-licensed drone flights, and HDR photography designed for the modern agent.
           </p>
           <div className="flex gap-4">
-            <Link href="/#packages">
-              <AccentButton className="min-w-[200px] h-14">View {area.name} Packages</AccentButton>
-            </Link>
+            <AccentButton href={ownerPhoneHref} className="min-w-[200px] h-14">
+              View {area.name} Packages
+            </AccentButton>
           </div>
         </div>
       </section>

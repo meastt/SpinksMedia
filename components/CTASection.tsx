@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AccentButton } from "./ui/AccentButton";
+import { ownerPhoneHref } from "@/data/contact";
 
 export const CTASection = () => {
   return (
@@ -44,7 +45,9 @@ export const CTASection = () => {
               In 48 hours, we film 45-second branding videos, clips, and professional headshots to transform your social presence. Stop competing—start winning.
             </p>
             <div className="flex justify-center lg:justify-start">
-              <AccentButton className="min-w-[240px] text-base h-14">Book a Shoot</AccentButton>
+              <AccentButton href={ownerPhoneHref} className="min-w-[240px] text-base h-14">
+                Book a Shoot
+              </AccentButton>
             </div>
           </div>
 

@@ -3,9 +3,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { outOfStatePackages } from "@/data/outOfStatePackages";
+import { ownerPhoneHref } from "@/data/contact";
 import { AccordionItem } from "./ui/AccordionItem";
 import { AccentButton } from "./ui/AccentButton";
-import Image from "next/image";
 
 export const OutOfStatePackages = () => {
   return (
@@ -76,7 +76,7 @@ export const OutOfStatePackages = () => {
                 </div>
 
                 {/* CTA Button */}
-                <AccentButton className="w-full mt-8" showIcon={false}>
+                <AccentButton href={ownerPhoneHref} className="w-full mt-8" showIcon={false}>
                   Explore Package
                 </AccentButton>
               </div>

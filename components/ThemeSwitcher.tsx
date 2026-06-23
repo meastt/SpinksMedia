@@ -83,25 +83,35 @@ const THEMES: Theme[] = [
 const STORAGE_KEY = "spinks-media-theme";
 const DEFAULT_THEME: ThemeId = "ember";
 
+const isThemeId = (value: string | null): value is ThemeId => {
+  return THEMES.some((theme) => theme.id === value);
+};
+
+const getInitialTheme = (): ThemeId => {
+  if (typeof window === "undefined") {
+    return DEFAULT_THEME;
+  }
+
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return isThemeId(saved) ? saved : DEFAULT_THEME;
+  } catch {
+    return DEFAULT_THEME;
+  }
+};
+
+const applyTheme = (id: ThemeId) => {
+  document.documentElement.setAttribute("data-theme", id);
+  localStorage.setItem(STORAGE_KEY, id);
+};
+
 export const ThemeSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTheme, setActiveTheme] = useState<ThemeId>(DEFAULT_THEME);
+  const [activeTheme, setActiveTheme] = useState<ThemeId>(getInitialTheme);
 
-  // On mount, restore saved theme
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY) as ThemeId | null;
-    if (saved && THEMES.some((t) => t.id === saved)) {
-      applyTheme(saved);
-      setActiveTheme(saved);
-    } else {
-      applyTheme(DEFAULT_THEME);
-    }
-  }, []);
-
-  const applyTheme = (id: ThemeId) => {
-    document.documentElement.setAttribute("data-theme", id);
-    localStorage.setItem(STORAGE_KEY, id);
-  };
+    applyTheme(activeTheme);
+  }, [activeTheme]);
 
   const handleSelect = (id: ThemeId) => {
     setActiveTheme(id);

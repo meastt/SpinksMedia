@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform, animate } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { stats } from "@/data/metrics";
 
 const CountUp = ({ value, label }: { value: string; label: string }) => {

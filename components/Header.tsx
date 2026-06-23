@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Phone, Menu, X } from "lucide-react";
 import { AccentButton } from "./ui/AccentButton";
 import { motion, AnimatePresence } from "framer-motion";
+import { ownerPhoneHref, ownerPhoneNumber } from "@/data/contact";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,6 +14,7 @@ export const Header = () => {
   const navLinks = [
     { name: "Packages", href: "/#services" },
     { name: "Our Process", href: "/process" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "FAQ", href: "/#faq" },
   ];
 
@@ -48,11 +50,16 @@ export const Header = () => {
 
         {/* Right: Phone & Book Button (Desktop) */}
         <div className="hidden lg:flex items-center gap-6">
-          <div className="flex items-center gap-2 text-white font-medium font-dm-sans">
+          <a
+            href={ownerPhoneHref}
+            className="flex items-center gap-2 text-white font-medium font-dm-sans hover:text-white/80 transition-colors"
+            aria-label={`Call Spinks Media at ${ownerPhoneNumber}`}
+          >
             <Phone className="w-4 h-4" />
-            <span>(435) 668-3165</span>
-          </div>
+            <span>{ownerPhoneNumber}</span>
+          </a>
           <AccentButton 
+            href={ownerPhoneHref}
             showIcon={false}
             className="h-10 px-6 text-xs bg-transparent text-white hover:bg-white hover:text-terracotta border-2 border-white"
           >
@@ -91,11 +98,16 @@ export const Header = () => {
               </Link>
             ))}
             <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
-              <div className="flex items-center gap-2 text-white font-medium font-dm-sans">
+              <a
+                href={ownerPhoneHref}
+                className="flex items-center gap-2 text-white font-medium font-dm-sans"
+                aria-label={`Call Spinks Media at ${ownerPhoneNumber}`}
+              >
                 <Phone className="w-4 h-4" />
-                <span>(435) 668-3165</span>
-              </div>
+                <span>{ownerPhoneNumber}</span>
+              </a>
               <AccentButton 
+                href={ownerPhoneHref}
                 showIcon={false}
                 className="w-full bg-transparent text-white border-2 border-white hover:bg-white hover:text-terracotta"
               >
