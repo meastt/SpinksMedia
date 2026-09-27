@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Oswald, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import { StructuredData } from "@/components/StructuredData";
+import { siteUrl } from "@/data/site";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -17,8 +18,18 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Spinks Media | Cinematic Real Estate Content That Wins Listings",
-  description: "St. George based real estate media company specializing in cinematic video, high-end photography, and scroll-stopping social content.",
+  metadataBase: new URL(siteUrl),
+  title: "St. George Real Estate Photography & Video | Spinks Media",
+  description: "Real estate photography, cinematic listing video and drone media in St. George, Utah. Packages from $750 with 24-hour photo delivery for Southern Utah agents.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "Spinks Media",
+    locale: "en_US",
+    url: "/",
+    title: "St. George Real Estate Photography & Video | Spinks Media",
+    description: "Cinematic listing video, HDR photography and drone media for Southern Utah real estate agents.",
+  },
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",

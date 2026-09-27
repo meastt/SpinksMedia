@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Media Process & Standards | Spinks Media St. George",
   description:
     "Learn about our industry-leading real estate media process. Part 107 certified drone pilots, 24-48 hour turnaround, and cinema-grade 4K equipment serving Southern Utah.",
+  alternates: { canonical: "/process" },
 };
 
 export default function ProcessPage() {

@@ -46,7 +46,7 @@ export const HeroSection = () => {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-terracotta bg-terracotta/10 text-white text-xs font-semibold uppercase tracking-widest font-dm-sans mb-8"
         >
           <MapPin className="w-3 h-3 text-terracotta" />
-          St. George Based Real Estate Media Company
+          St. George Real Estate Photography &amp; Video
         </motion.div>
 
         {/* H1 Headline – no entrance animation so LCP element is immediately visible */}

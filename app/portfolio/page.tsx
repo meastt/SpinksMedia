@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Portfolio | Spinks Media Real Estate Photography",
   description:
     "Explore Spinks Media's real estate photography portfolio featuring interiors, exteriors, drone imagery, and twilight listing media in Southern Utah.",
+  alternates: { canonical: "/portfolio" },
 };
 
 export default function PortfolioPage() {
