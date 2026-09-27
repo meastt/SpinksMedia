@@ -1,5 +1,5 @@
-export const ownerPhoneNumber = "(435) 668-3165";
-export const ownerPhoneHref = "tel:+14356683165";
+export const ownerPhoneNumber = "(435) 215-5506";
+export const ownerPhoneHref = "tel:+14352155506";
 export const ownerEmail = "info.spinksmedia@gmail.com";
 export const ownerEmailHref = `mailto:${ownerEmail}`;
 
