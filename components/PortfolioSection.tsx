@@ -101,7 +101,7 @@ export const PortfolioSection = () => {
           >
             <Image
               src={activeImage.src}
-              alt={`Spinks Media portfolio image ${currentIndex + 1}`}
+              alt={activeImage.alt}
               fill
               sizes="(max-width: 1024px) 100vw, 70vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -145,7 +145,7 @@ export const PortfolioSection = () => {
                   >
                     <Image
                       src={image.src}
-                      alt={`Spinks Media portfolio thumbnail ${index + 1}`}
+                      alt={image.alt}
                       fill
                       sizes="(max-width: 1024px) 25vw, 180px"
                       className="object-cover"

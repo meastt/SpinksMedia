@@ -11,10 +11,12 @@ import { FAQSection } from "@/components/FAQSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { FaqStructuredData } from "@/components/StructuredData";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--color-black)] overflow-clip">
+      <FaqStructuredData />
       <Header />
       <HeroSection />
       <PhoneScrollSection />

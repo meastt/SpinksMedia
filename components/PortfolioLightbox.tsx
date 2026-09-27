@@ -112,7 +112,7 @@ export const PortfolioLightbox = ({
           >
             <Image
               src={activeImage.src}
-              alt={`Spinks Media portfolio image ${activeIndex + 1}`}
+              alt={activeImage.alt}
               fill
               sizes="100vw"
               className="object-contain"

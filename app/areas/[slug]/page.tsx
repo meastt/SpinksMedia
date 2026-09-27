@@ -7,15 +7,8 @@ import { MapPin, Camera, Video } from "lucide-react";
 import { AccentButton } from "@/components/ui/AccentButton";
 import { ownerPhoneHref } from "@/data/contact";
 import { notFound } from "next/navigation";
+import { serviceAreas as validAreas } from "@/data/areas";
 
-// Define the valid service areas for the geographic SEO hub
-const validAreas = [
-  { slug: "washington", name: "Washington City" },
-  { slug: "santa-clara", name: "Santa Clara" },
-  { slug: "hurricane", name: "Hurricane" },
-  { slug: "ivins", name: "Ivins" },
-  { slug: "cedar-city", name: "Cedar City" },
-];
 
 // Generate dynamic metadata for SEO crawling based on the URL parameter
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -30,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `Real Estate Photography & Video in ${area.name} | Spinks Media`,
     description: `Leading real estate media services in ${area.name}, Utah. Cinematic drone videos, HDR photography, and 48-hour turnarounds to help local agents win listings.`,
     alternates: {
-      canonical: `https://spinksmedia.com/areas/${area.slug}`,
+      canonical: `/areas/${area.slug}`,
     },
   };
 }

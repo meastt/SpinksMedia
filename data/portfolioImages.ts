@@ -90,10 +90,54 @@ const portfolioSources = [
   portfolioDSC0560,
 ];
 
+// Descriptive alt text, same order as portfolioSources. Update both lists together.
+const portfolioAlts = [
+  "Modern dining room with floor-to-ceiling windows and a statement chandelier",
+  "Bright bedroom with sliding glass walls opening to the pool",
+  "Drone aerial of a modern desert home and hillside neighborhood in Southern Utah",
+  "Covered patio with fire table and mountain views at sunset",
+  "Modern two-story home exterior with desert landscaping",
+  "Oversized garage with epoxy floor and glass roll-up door",
+  "Twilight drone aerial of a hillside home with red rock mountains behind it",
+  "Single-story stucco home exterior with a three-car garage",
+  "Modern backyard with pool, spa and two-story glass walls",
+  "Bedroom with glass walls looking out to the pool",
+  "Backyard pool and covered patio at sunset",
+  "Drone aerial of a hillside home with red cliffs in the background",
+  "Twilight pool deck with lounge chairs and palm trees",
+  "Backyard pool with in-water loungers and water features",
+  "Pool with sun shelf loungers and sheer-descent water features",
+  "Living room with stone fireplace wall and sliding doors to the pool",
+  "White kitchen with a large island, pendant lights and bar seating",
+  "Open-concept great room and kitchen with two-story windows",
+  "Floating staircase with cable railing beside the entry",
+  "Living room with coffered ceiling and linear fireplace",
+  "Kitchen with dark island, bar stools and dining nook",
+  "Two-story modern home exterior with dark garage doors",
+  "Kitchen with wood-grain cabinets and gold accents",
+  "Bathroom vanity detail with gray cabinets and brass hardware",
+  "Freestanding tub with wall-mounted brass faucet",
+  "Gray shaker cabinet detail beside a stone accent wall",
+  "Marble backsplash with gas cooktop and pot filler",
+  "Kitchen island with woven bar stools and under-cabinet lighting",
+  "Open great room and kitchen with sliding glass doors",
+  "Kitchen with built-in stainless refrigerator and island seating",
+  "Kitchen with stone accent wall and black pendant lights",
+  "Kitchen island and built-in refrigerator with mountain-view windows",
+  "Primary bathroom with freestanding tub and checkerboard tile floor",
+  "Walk-in shower and freestanding tub with checkerboard tile floor",
+  "Double vanity with brass fixtures and checkerboard tile",
+  "Bathroom with herringbone tile accent wall and round mirror",
+  "Living room with fireplace and a wall of windows",
+  "Walnut kitchen with waterfall island and under-cabinet lighting",
+  "Walnut kitchen with large island and clerestory windows",
+  "Great room with linear fireplace and sliding doors to a view deck",
+];
+
 export const portfolioImages: PortfolioImage[] = portfolioSources.map((src, index) => ({
   id: `portfolio-${index + 1}`,
   src,
-  alt: `Spinks Media portfolio image ${index + 1}`,
+  alt: portfolioAlts[index] ?? `Spinks Media real estate photo ${index + 1}`,
 }));
 
 export const homepagePortfolioImages = portfolioImages.slice(0, 8);

@@ -70,7 +70,7 @@ export const PortfolioGrid = () => {
                 >
                   <Image
                     src={image.src}
-                    alt={`Spinks Media portfolio image ${index + 1}`}
+                    alt={image.alt}
                     fill
                     sizes={
                       index % 9 === 0

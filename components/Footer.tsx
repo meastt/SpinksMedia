@@ -12,6 +12,7 @@ import {
   ownerPhoneNumber,
   socialUrls,
 } from "@/data/contact";
+import { serviceAreas } from "@/data/areas";
 
 export const Footer = () => {
   const quickLinks = [
@@ -74,7 +75,7 @@ export const Footer = () => {
           <div className="hidden lg:block" />
 
           {/* Right: Links */}
-          <div className="grid grid-cols-2 gap-8 md:gap-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
             {/* Quick Links */}
             <div>
               <h3 className="text-terracotta text-xs font-bold uppercase tracking-widest mb-6 font-dm-sans">Quick Links</h3>
@@ -86,6 +87,23 @@ export const Footer = () => {
                       className="text-muted hover:text-white transition-colors font-dm-sans text-sm"
                     >
                       {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Service Areas */}
+            <div>
+              <h3 className="text-terracotta text-xs font-bold uppercase tracking-widest mb-6 font-dm-sans">Service Areas</h3>
+              <ul className="flex flex-col gap-4">
+                {serviceAreas.map((area) => (
+                  <li key={area.slug}>
+                    <Link
+                      href={`/areas/${area.slug}`}
+                      className="text-muted hover:text-white transition-colors font-dm-sans text-sm"
+                    >
+                      {area.name}
                     </Link>
                   </li>
                 ))}
